@@ -1,6 +1,5 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-from django.shortcuts import render
 import requests
 
 bot_name = ["SportsBot", "TestBot"]
@@ -14,8 +13,9 @@ def send_message(message):
 @csrf_exempt
 def handler(request):
     if request.method == "POST":
+        send_message(request.body.decode('utf-8')["name"])
         if request.body.decode('utf-8')["name"] not in bot_name:
-            send_message(request.body.decode('utf-8'))
+            send_message("Passed")
             return HttpResponse(status=200)
     else:
         http_resp = f"<p>The page is working.</p>"

@@ -27,6 +27,7 @@ djangorestframework==3.12.4
 djangorestframework-jwt==1.11.0
 et-xmlfile==1.1.0
 flake8==3.9.2
+gunicorn==20.1.0
 hiredis==2.0.0
 hyperlink==21.0.0
 idna==2.10

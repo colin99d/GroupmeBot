@@ -13,7 +13,7 @@ def send_message(message):
 @csrf_exempt
 def handler(request):
     if request.method == "POST":
-        response = send_message(request)
+        response = send_message(request.POST)
         return HttpResponse(status=200)
     else:
         response = send_message("Whats up? Crackers!")

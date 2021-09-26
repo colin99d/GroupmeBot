@@ -16,11 +16,8 @@ def handler(request):
     if request.method == "POST":
         body = json.loads(request.body.decode('utf-8'))
         name = body.get("name").strip()
-        send_message(name)
-        send_message(name == "TestBot")
-        if name == "TestBot" or name == "SportsBot":
-            pass
-        else:
+
+        if name not in bot_names:
             send_message("Passed")
             return HttpResponse(status=200)
     else:

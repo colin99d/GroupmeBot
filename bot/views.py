@@ -3,7 +3,7 @@ from django.http import HttpResponse
 import requests
 import json
 
-bot_name = ["SportsBot", "TestBot"]
+bot_names = ["SportsBot", "TestBot"]
 
 def send_message(message):
     url = "https://api.groupme.com/v3/bots/post"
@@ -15,8 +15,10 @@ def send_message(message):
 def handler(request):
     if request.method == "POST":
         body = json.loads(request.body.decode('utf-8'))
-        send_message(body.get("name"))
-        if body.get("name") not in bot_name:
+        name = body.get("name").strip()
+        send_message(name)
+        send_message(name == "TestBot")
+        if name not in bot_names:
             send_message("Passed")
             return HttpResponse(status=200)
     else:

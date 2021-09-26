@@ -30,7 +30,7 @@ def handler(request):
         name = body.get("name").strip()
         text = body.get("text").strip()
         group_id = body.get("group_id").strip()
-        if name not in bot_names and ():
+        if name not in bot_names:
             if "retard" in text.lower():
                 send_message("R-word hurts!!!", group_id)
             if "@SportsBot" in text or "@TestBot" in text:

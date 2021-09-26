@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import render
 import requests
@@ -9,7 +10,7 @@ def send_message(message):
     group_id = "69502628"
     return requests.post(url=f"{url}?bot_id={bot_id}&text={message}")
 
-
+@csrf_exempt
 def handler(request):
     if request.method == "POST":
         response = send_message(request)

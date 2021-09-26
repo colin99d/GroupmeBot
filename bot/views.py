@@ -13,9 +13,8 @@ def send_message(message):
 @csrf_exempt
 def handler(request):
     if request.method == "POST":
-        response = send_message(request.POST)
+        send_message(request.body.decode('utf-8'))
         return HttpResponse(status=200)
     else:
-        response = send_message("Whats up? Crackers!")
-        http_resp = f"<p>The response was: {response}</p>"
+        http_resp = f"<p>The page is working.</p>"
         return HttpResponse(http_resp)

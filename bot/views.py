@@ -12,7 +12,7 @@ def send_message(message):
 
 def handler(request):
     if request.method == "POST":
-        response = send_message("Whats up? Crackers!")
+        response = send_message(request)
         return HttpResponse(status=200)
     else:
         response = send_message("Whats up? Crackers!")

@@ -4,7 +4,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
-from ESPN import get_standings
+from .ESPN import get_standings
 
 bot_names = ["SportsBot", "TestBot"]
 

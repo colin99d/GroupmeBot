@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 from .ESPN import get_standings
+from .utils import evan_voyager
 
 bot_names = ["SportsBot", "TestBot"]
 
@@ -24,12 +25,13 @@ def handler(request):
         name = body.get("name").strip()
         text = body.get("text").strip().lower()
         group_id = body.get("group_id").strip()
+        
         if name not in bot_names:
             if "retard" in text:
                 send_message("R-word hurts!!!", group_id)
             if "@sportsbot" in text or "@testbot" in text:
                 if "help" in text:
-                    send_message("Options:\n-Johnny\n-Fantasy\n-Scores\n\nAnd NO saying the r-word!", group_id)
+                    send_message("Options:\n-Johnny\n-Fantasy\n-Scores\n-Voyager\n\nAnd NO saying the r-word!", group_id)
                 elif "johnny" in text:
                     send_message("Johnny its been years, reproduce already", group_id)
                 elif "fantasy" in text:
@@ -37,6 +39,10 @@ def handler(request):
                 elif "scores" in text:
                     message = get_standings()
                     send_message(message, group_id)
+                elif "voyager" in text:
+                    message = evan_voyager()
+                    send_message(message, group_id)
+
         return HttpResponse(status=200)
     else:
         message = get_standings()

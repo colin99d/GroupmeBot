@@ -11,6 +11,6 @@ POST http://127.0.0.1:8000/
   "sender_type": "user",
   "source_guid": "GUID",
   "system": false,
-  "text": "@TestBot scores",
+  "text": "@TestBot voyager",
   "user_id": "1234567890"
 }

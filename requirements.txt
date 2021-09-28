@@ -61,4 +61,5 @@ vine==5.0.0
 wcwidth==0.2.5
 wrapt==1.12.1
 yarl==1.6.3
+yfinance==0.1.63
 zope.interface==5.4.0

@@ -5,14 +5,16 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 from .ESPN import get_standings
-from .utils import evan_voyager
+from .utils import evan_voyager, remove_user
 
 bot_names = ["SportsBot", "TestBot"]
 
 def send_message(message, group_id):
     url = "https://api.groupme.com/v3/bots/post"
+    #Test Group
     if group_id == "69502628":
         bot_id = "5e6fccada121999d1dd6759d7a"
+    #Final Group
     elif group_id == "46166401":
         bot_id = "d1d19ce1822d3080e157027858"
 
@@ -24,11 +26,14 @@ def handler(request):
         body = json.loads(request.body.decode('utf-8'))
         name = body.get("name").strip()
         text = body.get("text").strip().lower()
+        user_id = body.get("user_id").strip()
+        id = body.get("id").strip()
         group_id = body.get("group_id").strip()
         
         if name not in bot_names:
             if "retard" in text:
                 send_message("R-word hurts!!!", group_id)
+                remove_user(group_id, id)
             if "@sportsbot" in text or "@testbot" in text:
                 if "help" in text:
                     send_message("Options:\n-Johnny\n-Fantasy\n-Scores\n-Voyager\n\nAnd NO saying the r-word!", group_id)

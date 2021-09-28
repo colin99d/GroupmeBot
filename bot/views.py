@@ -24,9 +24,6 @@ def handler(request):
         name = body.get("name").strip()
         text = body.get("text").strip().lower()
         group_id = body.get("group_id").strip()
-        send_message("-----------", group_id) #logger
-        send_message("First if", group_id) #logger
-        send_message(text, group_id) #logger
         if name not in bot_names:
             send_message("Second if", group_id) #logger
             if "retard" in text:

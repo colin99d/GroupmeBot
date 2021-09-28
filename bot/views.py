@@ -27,8 +27,7 @@ def handler(request):
         if name not in bot_names:
             if "retard" in text:
                 send_message("R-word hurts!!!", group_id)
-            if "@SportsBot" in text or "@TestBot" in text:
-                send_message("Third if", group_id) #Logger
+            if "@sportsbot" in text or "@testbot" in text:
                 if "help" in text:
                     send_message("Options:\n-Johnny\n-Fantasy\n-Scores\n\nAnd NO saying the r-word!", group_id)
                 elif "johnny" in text:

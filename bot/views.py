@@ -17,15 +17,6 @@ def send_message(message, group_id):
 
     return requests.post(url=f"{url}?bot_id={bot_id}&text={message}")
 
-"""
-def fantasy_api():
-    league_id = 1659909443
-    year = 2021
-    url = "https://fantasy.espn.com/apis/v3/games/ffl/leagueHistory/" + \
-      str(league_id) + "?seasonId=" + str(year)
-    r = requests.get(url)
-"""
-
 @csrf_exempt
 def handler(request):
     if request.method == "POST":
@@ -33,10 +24,12 @@ def handler(request):
         name = body.get("name").strip()
         text = body.get("text").strip().lower()
         group_id = body.get("group_id").strip()
+        send_message("First if", group_id) #logger
         if name not in bot_names:
             if "retard" in text:
                 send_message("R-word hurts!!!", group_id)
             if "@SportsBot" in text or "@TestBot" in text:
+                send_message("Second if", group_id) #Logger
                 if "help" in text:
                     send_message("Options:\n-Johnny\n-Fantasy\n-Scores\n\nAnd NO saying the r-word!", group_id)
                 elif "johnny" in text:
@@ -48,5 +41,6 @@ def handler(request):
                     send_message(message, group_id)
                 return HttpResponse(status=200)
     else:
-        http_resp = f"<p>The page is working.</p>"
+        message = get_standings()
+        http_resp = f"<p>The website is running.</p>"
         return HttpResponse(http_resp)

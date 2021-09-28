@@ -24,12 +24,15 @@ def handler(request):
         name = body.get("name").strip()
         text = body.get("text").strip().lower()
         group_id = body.get("group_id").strip()
+        send_message("-----------", group_id) #logger
         send_message("First if", group_id) #logger
+        send_message(text, group_id) #logger
         if name not in bot_names:
+            send_message("Second if", group_id) #logger
             if "retard" in text:
                 send_message("R-word hurts!!!", group_id)
             if "@SportsBot" in text or "@TestBot" in text:
-                send_message("Second if", group_id) #Logger
+                send_message("Third if", group_id) #Logger
                 if "help" in text:
                     send_message("Options:\n-Johnny\n-Fantasy\n-Scores\n\nAnd NO saying the r-word!", group_id)
                 elif "johnny" in text:

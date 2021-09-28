@@ -2,7 +2,6 @@ import requests
 
 #"&view=mDraftDetail&view=mLiveScoring&view=mMatchupScore&view=mPendingTransactions&view=mPositionalRatings&view=mSettings&view=modular&view=mNav&view=mMatchupScore"
 
-
 def get_standings():
     base = "http://fantasy.espn.com/apis/v3/games/ffl/seasons/"
     year = "2021"

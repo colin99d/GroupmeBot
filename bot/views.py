@@ -25,7 +25,6 @@ def handler(request):
         text = body.get("text").strip().lower()
         group_id = body.get("group_id").strip()
         if name not in bot_names:
-            send_message("Second if", group_id) #logger
             if "retard" in text:
                 send_message("R-word hurts!!!", group_id)
             if "@SportsBot" in text or "@TestBot" in text:
@@ -39,7 +38,7 @@ def handler(request):
                 elif "scores" in text:
                     message = get_standings()
                     send_message(message, group_id)
-                return HttpResponse(status=200)
+        return HttpResponse(status=200)
     else:
         message = get_standings()
         http_resp = f"<p>The website is running.</p>"

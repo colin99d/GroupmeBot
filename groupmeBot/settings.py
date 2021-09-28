@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h#)i)ufzsc(er!agm#f*qg@dbeawsj-d252!2=^c8g&p_7(8tv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['mygroupmetestbot.herokuapp.com','127.0.0.1']
 

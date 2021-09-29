@@ -5,13 +5,13 @@ POST http://127.0.0.1:8000/
   "avatar_url": "https://i.groupme.com/123456789",
   "created_at": 1302623328,
   "group_id": "69502628",
-  "id": "666177541",
+  "id": "666146069",
   "name": "John",
   "sender_id": "12345",
   "sender_type": "user",
   "source_guid": "GUID",
   "system": false,
   "text": "retard",
-  "user_id": "68449690"
+  "user_id": "29762584"
 }
 

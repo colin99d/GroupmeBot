@@ -13,9 +13,7 @@ def get_members(group):
     return members
 
 def get_id(group, user):
-    mid = f"/groups/{group}"
-    response = requests.get(base+mid+end)
-    members = response.json()["response"]["members"]
+    members = get_members(group)
     result = list(filter(lambda x: int(x['user_id']) == int(user), members))
     return result[0]['id']
 
@@ -32,3 +30,5 @@ def remove_user(group, id):
     mid = f"/groups/{group}/members/{id}/remove"
     data = {"membership_id":id}
     requests.post(base+mid+end,data=json.dumps(data))
+
+print(get_members(69502628))

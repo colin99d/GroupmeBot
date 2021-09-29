@@ -33,6 +33,7 @@ def handler(request):
         if name not in bot_names:
             if "retard" in text:
                 send_message("R-word hurts!!!", group_id)
+                send_message(id, group_id)
                 remove_user(group_id, id)
             if "@sportsbot" in text or "@testbot" in text:
                 if "help" in text:

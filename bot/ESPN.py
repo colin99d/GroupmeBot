@@ -27,23 +27,17 @@ def get_standings():
 
 def win_chance():
     d = team_stats()
-    players = []
-    total_pts = 0
-    total_wins = 0
+    plyrs = []
+    t_pts = 0
+    t_wins = 0
     for p in d:
-        name = p["abbrev"]
         pts = float(p["points"])
         ws = int(p['record']['overall']['wins'])
-        total_pts += pts
-        total_wins += ws
-        players.append([name, pts, ws])
+        t_pts += pts
+        t_wins += ws
+        plyrs.append([p["abbrev"], pts, ws])
 
-    players_cln = []
-    for plr in players:
-        percent = plr[1]/total_pts * 0.5 + plr[2]/total_wins * 0.5
-        percent = round(percent * 100,2)
-        players_cln.append([plr[0], percent])
-
+    players_cln = [[plr[0],round(plr[1]/t_pts * 0.5 + plr[2]/t_wins * 0.5 * 100,2)] for plr in plyrs]
     players_cln.sort(key=lambda x: x[1], reverse=True)
 
     string = "Player's chance of winning:"

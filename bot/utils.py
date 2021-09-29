@@ -1,10 +1,19 @@
 import json
+import html
+from random import randint
+
+from requests.sessions import default_headers
 
 import yfinance as yf
 import requests
 
 base = "https://api.groupme.com/v3"
 end = "?token=85w8CudYavVwkN7YAdOQwSyzXyCYDx7SV9aLBoRL"
+
+def get_random(lst):
+    amount = len(lst)
+    rnd = randint(0,amount-1)
+    return lst[rnd]
 
 def send_message(message, group_id):
     mid = "/bots/post"
@@ -42,3 +51,11 @@ def remove_user(group, user):
     mid = f"/groups/{group}/members/{id}/remove"
     data = {"membership_id":id}
     requests.post(base+mid+end,data=json.dumps(data))
+
+def random_insult(group):
+    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=text")
+    data = html.unescape(response.text)
+    data = data[0].lower() + data[1:]
+    members = get_members(group)
+    name = get_random(members)['nickname']
+    return f"@{name} {data}"

@@ -4,11 +4,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 from .ESPN import get_standings, win_chance
-from .utils import evan_voyager, remove_user, send_message
+from .utils import evan_voyager, remove_user, send_message, random_insult
 
-bot_names = ["SportsBot", "TestBot"]
-
-options = ["Johnny", "Fantasy", "Scores", "Voyager", "Winner"]
+options = ["Johnny", "Fantasy", "Scores", "Voyager", "Winner", "Insult"]
 
 @csrf_exempt
 def handler(request):
@@ -19,29 +17,31 @@ def handler(request):
         user_id = body.get("user_id").strip()
         group_id = body.get("group_id").strip()
         
-        if name not in bot_names:
+        if name != "SportsBot":
             if "retard" in text:
-                send_message("R-word hurts!!!", group_id)
+                message = "R-word hurts!!!"
                 remove_user(group_id, user_id)
-            if "@sportsbot" in text or "@testbot" in text:
+
+            if "@sportsbot" in text:
                 if "help" in text:
                     message = "Options:"
                     for opt in options:
                         message += f"\n-{opt}"
-                    send_message(message, group_id)
                 elif "johnny" in text:
-                    send_message("Johnny its been years, reproduce already", group_id)
+                    message = "Johnny its been years, reproduce already"
                 elif "fantasy" in text:
-                    send_message("Stop the steal! The commish allows collusion!!!", group_id)
+                    message = "Stop the steal! The commish allows collusion!!!"
                 elif "scores" in text:
                     message = get_standings()
-                    send_message(message, group_id)
                 elif "voyager" in text:
                     message = evan_voyager()
-                    send_message(message, group_id)
                 elif "winner" in text:
                     message = win_chance()
-                    send_message(message, group_id)
+                elif "insult" in text:
+                    message = random_insult()
+
+            if message:
+                send_message(message, group_id)
 
         return HttpResponse(status=200)
     else:

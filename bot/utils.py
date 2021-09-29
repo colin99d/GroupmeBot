@@ -42,5 +42,3 @@ def remove_user(group, user):
     mid = f"/groups/{group}/members/{id}/remove"
     data = {"membership_id":id}
     requests.post(base+mid+end,data=json.dumps(data))
-
-#print(get_members(69502628))

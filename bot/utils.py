@@ -26,7 +26,8 @@ def evan_voyager():
     d = round(abs(d),2)
     return f"Evan has {t} ${d} from Voyager."
 
-def remove_user(group, id):
+def remove_user(group, user):
+    id = get_id(user)
     mid = f"/groups/{group}/members/{id}/remove"
     data = {"membership_id":id}
     requests.post(base+mid+end,data=json.dumps(data))

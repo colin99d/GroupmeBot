@@ -6,6 +6,17 @@ import requests
 base = "https://api.groupme.com/v3"
 end = "?token=85w8CudYavVwkN7YAdOQwSyzXyCYDx7SV9aLBoRL"
 
+def send_message(message, group_id):
+    mid = "/bots/post"
+    #Test Group
+    if group_id == "69502628":
+        bot_id = "5e6fccada121999d1dd6759d7a"
+    #Final Group
+    elif group_id == "46166401":
+        bot_id = "d1d19ce1822d3080e157027858"
+
+    return requests.post(url=f"{base+mid}?bot_id={bot_id}&text={message}")
+
 def get_members(group):
     mid = f"/groups/{group}"
     response = requests.get(base+mid+end)
@@ -27,7 +38,7 @@ def evan_voyager():
     return f"Evan has {t} ${d} from Voyager."
 
 def remove_user(group, user):
-    id = get_id(user)
+    id = get_id(group, user)
     mid = f"/groups/{group}/members/{id}/remove"
     data = {"membership_id":id}
     requests.post(base+mid+end,data=json.dumps(data))

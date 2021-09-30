@@ -17,7 +17,7 @@ def handler(request):
         user_id = body.get("user_id").strip()
         group_id = body.get("group_id").strip()
         message = ""
-        
+
         if name != "SportsBot":
             if "retard" in text:
                 message = "R-word hurts!!!"

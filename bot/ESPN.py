@@ -21,7 +21,8 @@ def get_standings():
     text = 'Name\tW\tL\n'
 
     for t in d:
-        text += f"{t['abbrev']}\t{t['record']['overall']['wins']}\t{t['record']['overall']['losses']}\n"
+        gap = " " * (4 - len(t['abbrev']))
+        text += f"{t['abbrev']}\t{t['record']['overall']['wins']} {gap}{t['record']['overall']['losses']}\n"
 
     return text
 
@@ -37,11 +38,12 @@ def win_chance():
         t_wins += ws
         plyrs.append([p["abbrev"], pts, ws])
 
-    players_cln = [[plr[0],round(plr[1]/t_pts * 0.5 + plr[2]/t_wins * 0.5 * 100,2)] for plr in plyrs]
+    players_cln = [[plr[0],round((plr[1]/t_pts * 0.5 + plr[2]/t_wins * 0.5) * 100,2)] for plr in plyrs]
     players_cln.sort(key=lambda x: x[1], reverse=True)
 
     string = "Player's chance of winning:"
     for plr in players_cln:
-        string += f"\n{plr[0]}\t{plr[1]}%"
+        gap = " " * (4 - len(plr[0]))
+        string += f"\n{plr[0]} {gap}{plr[1]}%"
 
     return string

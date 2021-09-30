@@ -38,7 +38,7 @@ def handler(request):
                 elif "winner" in text:
                     message = win_chance()
                 elif "insult" in text:
-                    message = random_insult()
+                    message = random_insult(group_id)
 
             if message:
                 send_message(message, group_id)

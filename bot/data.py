@@ -81,9 +81,9 @@ players = {
         "image": "MattB.jpeg",
     },
     "Nathaniel Bledsoe": {
-        "Description": "",
-        "Strengths": [],
-        "Weaknesses": [],
+        "Description": "A loud gentleman from Kirksville, Missouri.",
+        "Strengths": ["A literal doctor", "Funniest member of groupchat", "Destroying opponents"],
+        "Weaknesses": ["The 'rules'", "SAM", "Appeasing Evan"],
         "image": "NathanielB.jpeg",
     },
 }

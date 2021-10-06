@@ -52,7 +52,7 @@ players = {
     },
     "Evan Parshall": {
         "Description": "A small boi from West Lafayette, Indiana.",
-        "Strengths": ["Spends $0 on dates", "3 points shot", "Beating Meyer 1v1"],
+        "Strengths": ["Spends $0 on dates", "3 point shots", "Beating Meyer 1v1"],
         "Weaknesses": ["Ankles", "Investment strategy", "Business>STEM"],
         "image": "EvanP.jpeg",
     },

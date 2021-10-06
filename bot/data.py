@@ -76,8 +76,8 @@ players = {
     },
     "Matt Bailey": {
         "Description": "A short fellow hailing from Crawfordsville, Indiana.",
-        "Strengths": ["Dated the cutest girl at Wabash", ""],
-        "Weaknesses": ["Dated the cutest girl at Wabash"],
+        "Strengths": ["Dated the cutest girl at Wabash", "D2 Athlete", "MBA Mindset"],
+        "Weaknesses": ["Dated the cutest girl at Wabash", "North side > South side", "Height requirements"],
         "image": "MattB.jpeg",
     },
     "Nathaniel Bledsoe": {

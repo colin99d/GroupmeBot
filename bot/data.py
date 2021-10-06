@@ -65,7 +65,7 @@ players = {
     "Johnny Crawford": {
         "Description": "A young genius from Cambridge, Massachutes.",
         "Strengths": ["Keeping secrets", "Running", "Being 2\" deep in Alec's sister"],
-        "Weaknesses": ["Haircuts", "Height requirements", ""],
+        "Weaknesses": ["Haircuts", "Height requirements", "Anti-vaxxers"],
         "image": "JohnnyC.jpeg",
     },
     "Joshua Vincent": {

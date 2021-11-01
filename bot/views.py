@@ -3,19 +3,12 @@ __docformat__ = "numpy"
 
 import json
 
-from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
-from .ESPN import get_standings, win_chance
-from .utils import (
-    evan_voyager,
-    remove_user,
-    send_message,
-    random_insult,
-    get_random,
-    send_image,
-)
+from . import utils
 from .data import players
+from .ESPN import get_standings, win_chance
 
 options = ["Johnny", "Fantasy", "Scores", "Voyager", "Winner", "Insult", "Card"]
 
@@ -33,7 +26,7 @@ def handler(request):
         if name != "SportsBot":
             if "retard" in text:
                 message = "R-word hurts!!!"
-                remove_user(group_id, user_id)
+                utils.remove_user(group_id, user_id)
 
             if "@sportsbot" in text:
                 if "help" in text:
@@ -47,15 +40,15 @@ def handler(request):
                 elif "scores" in text:
                     message = get_standings()
                 elif "voyager" in text:
-                    message = evan_voyager()
+                    message = utils.evan_voyager()
                 elif "winner" in text:
                     message = win_chance()
                 elif "insult" in text:
-                    message = random_insult(group_id)
+                    message = utils.random_insult(group_id)
                 elif "card" in text:
-                    selection = get_random([x for x in players])
+                    selection = utils.get_random(list(players))
                     p = players[selection]
-                    send_image(p["image"], group_id, selection)
+                    utils.send_image(p["image"], group_id, selection)
                     strengths: str = ""
                     weaknesses: str = ""
                     for strength in p["Strengths"]:
@@ -64,7 +57,7 @@ def handler(request):
                         weaknesses += weakness + "\n"
                     message = f"{p['Description']}\nStrengths:\n{strengths}\nWeaknesses:\n{weaknesses}"
             if message:
-                send_message(message, group_id)
+                utils.send_message(message, group_id)
 
         return HttpResponse(status=200)
     else:

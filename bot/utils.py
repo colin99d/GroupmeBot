@@ -69,7 +69,7 @@ def get_members(group: str) -> list[str]:
     return members
 
 
-def get_id(group: str, user: str) -> str:
+def get_id(group: str, user: str) -> Union[int, slice]:
     members = get_members(group)
     result = list(filter(lambda x: int(x["user_id"]) == int(user), members))
     return result[0]["id"]

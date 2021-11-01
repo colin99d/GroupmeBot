@@ -7,10 +7,21 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from . import utils
+from .bible import text_to_verse
 from .data import players
 from .ESPN import get_standings, win_chance
 
-options = ["Johnny", "Fantasy", "Scores", "Voyager", "Winner", "Insult", "Card"]
+
+options = [
+    "Johnny",
+    "Fantasy",
+    "Scores",
+    "Voyager",
+    "Winner",
+    "Insult",
+    "Card",
+    "Book Chapter:Verse",
+]
 
 
 @csrf_exempt
@@ -33,6 +44,8 @@ def handler(request):
                     message = "Options:"
                     for opt in options:
                         message += f"\n-{opt}"
+                elif ":" in text:
+                    message = text_to_verse(text)
                 elif "johnny" in text:
                     message = "Johnny its been years, reproduce already"
                 elif "fantasy" in text:
@@ -45,6 +58,8 @@ def handler(request):
                     message = win_chance()
                 elif "insult" in text:
                     message = utils.random_insult(group_id)
+                elif "harass" in text:
+                    utils.direct_message(group_id, user_id)
                 elif "card" in text:
                     selection = utils.get_random(list(players))
                     p = players[selection]

@@ -1,0 +1,9 @@
+POST https://api.groupme.com/v3/direct_messages?token=85w8CudYavVwkN7YAdOQwSyzXyCYDx7SV9aLBoRL
+
+{
+        "direct_message": {
+            "source_guid": "GUID",
+            "recipient_id": "163292923878111513",
+            "text": "Do you put out?",
+        }
+}

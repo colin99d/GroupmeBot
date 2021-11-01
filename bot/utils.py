@@ -1,15 +1,15 @@
 """Bot utils"""
 __docformat__ = "numpy"
 
-import json
 import html
-from random import randint
-import pathlib
+import json
 import os
-from typing import Union, Iterable
+import pathlib
+from random import randint
+from typing import Iterable, Union, List
 
-import yfinance as yf
 import requests
+import yfinance as yf
 
 response = Union[Iterable[str], int]
 
@@ -17,7 +17,7 @@ base = "https://api.groupme.com/v3"
 end = "?token=85w8CudYavVwkN7YAdOQwSyzXyCYDx7SV9aLBoRL"
 
 
-def get_random(lst: list[str]) -> str:
+def get_random(lst: List[str]) -> str:
     amount = len(lst)
     rnd = randint(0, amount - 1)
     return lst[rnd]
@@ -62,7 +62,7 @@ def send_image(image: str, group_id: str, text: str = None) -> response:
     return requests.post(base + mid + end, data=json.dumps(data))
 
 
-def get_members(group: str) -> list[str]:
+def get_members(group: str) -> List[str]:
     mid = f"/groups/{group}"
     response = requests.get(base + mid + end)
     members = response.json()["response"]["members"]
@@ -101,3 +101,19 @@ def random_insult(group) -> str:
     members = get_members(group)
     name = get_random(members)["nickname"]
     return f"@{name} {data}"
+
+
+# Does not work, recipient_id causes issues
+def direct_message(group, user):
+    id = get_id(group, user)
+    mid = f"/direct_messages"
+    cap = f"&source_guid=GUID&recipient_id={id}"
+    data = {
+        "direct_message": {
+            "source_guid": "GUID",
+            "recipient_id": f"{id}",
+            "text": "Do you put out?",
+        }
+    }
+    data = requests.post(base + mid + end + cap, data=json.dumps(data))
+    print(data.text)

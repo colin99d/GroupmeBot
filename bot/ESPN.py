@@ -76,6 +76,3 @@ def win_chance() -> str:
         string += f"\n{plr[0]} {gap}{plr[1]}%"
 
     return string
-
-
-print(win_chance())

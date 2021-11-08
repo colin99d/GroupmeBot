@@ -1,10 +1,7 @@
 """Bot views"""
 __docformat__ = "numpy"
 
-from . import utils
-from .bible import text_to_verse
-from . import data
-from .ESPN import get_standings, win_chance
+from . import data, bible, ESPN, utils
 
 
 def handler(body):
@@ -21,14 +18,15 @@ def handler(body):
 
         message_dict = {
             "help": "Options:" + "".join([f"\n-{x}" for x in data.options]),
-            ":": text_to_verse,
+            ":": bible.text_to_verse,
             "johnny": "Johnny its been years, reproduce already",
             "fantasy": "Stop the steal! The commish allows collusion!!!",
-            "scores": get_standings,
+            "scores": ESPN.get_standings,
             "voyager": utils.evan_voyager,
-            "winner": win_chance,
+            "winner": ESPN.win_chance,
             "insult": utils.random_insult,
             "card": utils.generate_card,
+            "nathan": utils.nathan,
         }
 
         if "@sportsbot" in text:

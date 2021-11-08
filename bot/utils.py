@@ -114,6 +114,18 @@ def generate_card(_, group_id):
     send_image(p["image"], group_id, selection)
 
 
+def nathan(*args):
+    lines = []
+    with open("bot/abstinence.txt") as file:
+        for line in file:
+            lines.append(line)
+    selection = get_random(lines)
+    response = "Nathaniel,\n\n Abstinence is hard. When you are in a stick situation"
+    response += f" tell the girl: {selection}"
+    print(response)
+    return response
+
+
 # Does not work, recipient_id causes issues
 def direct_message(group, user):
     id = get_id(group, user)

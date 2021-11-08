@@ -106,5 +106,6 @@ options = [
     "Winner",
     "Insult",
     "Card",
+    "Nathan",
     "Book Chapter:Verse",
 ]

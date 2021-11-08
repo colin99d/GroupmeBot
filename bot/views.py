@@ -37,6 +37,6 @@ def handler(body):
                     val = message_dict[key]
                     if isinstance(val, str):
                         utils.send_message(val, group_id)
-                        return
-                    utils.send_message(val(text, group_id), group_id)
+                    if val(text, group_id) is not None:
+                        utils.send_message(val(text, group_id), group_id)
                     return

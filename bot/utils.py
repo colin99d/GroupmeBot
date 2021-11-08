@@ -106,10 +106,12 @@ def random_insult(_, group: str) -> str:
 def generate_card(_, group_id):
     selection = get_random(list(data.players))
     p = data.players[selection]
-    send_image(p["image"], group_id, selection)
     strengths: str = "".join([x + "\n" for x in p["Strengths"]])
     weaknesses: str = "".join([x + "\n" for x in p["Weaknesses"]])
-    return f"{p['Description']}\nStrengths:\n{strengths}\nWeaknesses:\n{weaknesses}"
+    selection += (
+        f"\n{p['Description']}\n\nStrengths:\n{strengths}\nWeaknesses:\n{weaknesses}"
+    )
+    send_image(p["image"], group_id, selection)
 
 
 # Does not work, recipient_id causes issues

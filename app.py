@@ -14,8 +14,6 @@ def index():
         body = request.get_json(force=True)
         handler(body)
         return Response(status=201)
-    if request.method == "GET":
-        return "<h1>Gamestonk GroupmeBot URL</h1>"
     return "<h1>Gamestonk GroupmeBot URL</h1>"
 
 

@@ -1,6 +1,7 @@
 """Bot data"""
 __docformat__ = "numpy"
 
+
 players = {
     "Alec Hartman": {
         "Description": "A lightweight player hailing from Chapel Hill, North Carolina.",
@@ -95,3 +96,15 @@ players = {
         "image": "NathanielB.jpeg",
     },
 }
+
+
+options = [
+    "Johnny",
+    "Fantasy",
+    "Scores",
+    "Voyager",
+    "Winner",
+    "Insult",
+    "Card",
+    "Book Chapter:Verse",
+]

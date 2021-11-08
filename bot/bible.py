@@ -31,7 +31,7 @@ def get_verse(bookID, chapter, verse):
     return soup.text[len(verse) :]
 
 
-def text_to_verse(text):
+def text_to_verse(text, *args):
     try:
         if "@sportsbot " in text:
             text = text.replace("@sportsbot ", "")
@@ -42,5 +42,5 @@ def text_to_verse(text):
         nums = text.split()[-1].split(":")
         bid = books[index]["id"]
         return get_verse(bid, nums[0], nums[1])
-    except:
+    except BaseException:
         return "Could not find verse"

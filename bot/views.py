@@ -1,7 +1,7 @@
 """Bot views"""
 __docformat__ = "numpy"
 
-from . import data, bible, ESPN, utils
+from . import data, bible, ESPN, utils, groupme
 
 
 def handler(body):
@@ -12,8 +12,8 @@ def handler(body):
 
     if name != "SportsBot":
         if "retard" in text:
-            utils.send_message("R-word hurts!!!", group_id)
-            utils.remove_user(group_id, user_id)
+            groupme.send_message("R-word hurts!!!", group_id)
+            groupme.remove_user(group_id, user_id)
             return
 
         message_dict = {
@@ -34,7 +34,7 @@ def handler(body):
                 if key in text:
                     val = message_dict[key]
                     if isinstance(val, str):
-                        utils.send_message(val, group_id)
+                        groupme.send_message(val, group_id)
                     if val(text, group_id) is not None:
-                        utils.send_message(val(text, group_id), group_id)
+                        groupme.send_message(val(text, group_id), group_id)
                     return

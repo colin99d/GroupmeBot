@@ -100,4 +100,3 @@ def direct_message(group, user):
         }
     }
     data = requests.post(base + mid + end + cap, data=json.dumps(data))
-    print(data.text)

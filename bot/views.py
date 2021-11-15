@@ -28,6 +28,7 @@ def handler(body):
             "card": utils.generate_card,
             "nathan": utils.nathan,
             "sisters": utils.add_sisters,
+            "stock": market.chart_stock,
         }
 
         if "@sportsbot" in text:
@@ -36,6 +37,6 @@ def handler(body):
                     val = message_dict[key]
                     if isinstance(val, str):
                         groupme.send_message(val, group_id)
-                    if val(text, group_id) is not None:
+                    elif val(text, group_id) is not None:
                         groupme.send_message(val(text, group_id), group_id)
                     return

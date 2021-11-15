@@ -50,5 +50,4 @@ def nathan(*args):
     selection = get_random(lines)
     response = "Nathaniel,\n\n Abstinence is hard. When you are in a stick situation"
     response += f" tell the girl: {selection}"
-    print(response)
     return response

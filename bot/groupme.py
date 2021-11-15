@@ -71,6 +71,22 @@ def remove_user(group: str, user: str) -> None:
     requests.post(base + mid + end, data=json.dumps(data))
 
 
+def group_info(group: str):
+    mid = f"/groups/{group}"
+    data = {"id": group}
+    return requests.get(base + mid + end, data=json.dumps(data))
+
+
+def list_groups():
+    mid = "/groups"
+    return requests.get(base + mid + end)
+
+
+def add_user(group: str, packet):
+    mid = f"/groups/{group}/members/add"
+    requests.post(base + mid + end, data=json.dumps(packet))
+
+
 # Does not work, recipient_id causes issues
 def direct_message(group, user):
     id = get_id(group, user)

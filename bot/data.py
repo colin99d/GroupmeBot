@@ -109,3 +109,38 @@ options = [
     "Nathan",
     "Book Chapter:Verse",
 ]
+
+
+test_add = {
+    "members": [
+        {
+            "nickname": "Party Pooper",
+            "user_id": "27910966",
+        },
+    ]
+}
+
+real_add = {
+    "members": [
+        {
+            "nickname": "Alec's sister #1",
+            "user_id": "8675873",
+        },
+        {
+            "nickname": "Alec's sister #2",
+            "user_id": "37580274",
+        },
+        {
+            "nickname": "Evan's sister",
+            "user_id": "32617432",
+        },
+        {
+            "nickname": "Matt's sister",
+            "user_id": "48632622",
+        },
+        {
+            "nickname": "Colin's sister",
+            "phone_number": "+1 3173161456",
+        },
+    ]
+}

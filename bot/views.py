@@ -1,7 +1,7 @@
 """Bot views"""
 __docformat__ = "numpy"
 
-from . import data, bible, ESPN, utils, groupme
+from . import data, bible, ESPN, utils, groupme, market
 
 
 def handler(body):
@@ -22,11 +22,12 @@ def handler(body):
             "johnny": "Johnny its been years, reproduce already",
             "fantasy": "Stop the steal! The commish allows collusion!!!",
             "scores": ESPN.get_standings,
-            "voyager": utils.evan_voyager,
+            "voyager": market.evan_voyager,
             "winner": ESPN.win_chance,
             "insult": utils.random_insult,
             "card": utils.generate_card,
             "nathan": utils.nathan,
+            "sisters": utils.add_sisters,
         }
 
         if "@sportsbot" in text:

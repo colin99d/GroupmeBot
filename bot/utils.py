@@ -5,7 +5,6 @@ import html
 from random import randint
 
 import requests
-import yfinance as yf
 
 from . import data, groupme
 
@@ -14,16 +13,6 @@ def get_random(lst):
     amount = len(lst)
     rnd = randint(0, amount - 1)
     return lst[rnd]
-
-
-def evan_voyager(*args) -> str:
-    stock = yf.Ticker("VYGVF")
-    info = stock.info
-    price = float(info["currentPrice"])
-    d = (price - 16) * 300
-    t = "made" if d > 0 else "lost"
-    d = round(abs(d), 2)
-    return f"Evan has {t} ${d} from Voyager."
 
 
 def random_insult(_, group: str) -> str:
@@ -46,6 +35,11 @@ def generate_card(_, group_id):
         f"\n{p['Description']}\n\nStrengths:\n{strengths}\nWeaknesses:\n{weaknesses}"
     )
     groupme.send_image(p["image"], group_id, selection)
+
+
+def add_sisters(_, group_id: str):
+    packet = data.test_add if group_id == "69502628" else data.real_add
+    groupme.add_user(group_id, packet)
 
 
 def nathan(*args):

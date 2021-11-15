@@ -107,7 +107,7 @@ options = [
     "Insult",
     "Card",
     "Nathan",
-    "Book <Chapter:Verse>",
+    "<Book Chapter:Verse>",
     "Stock <ticker>",
 ]
 

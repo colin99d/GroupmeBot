@@ -27,7 +27,7 @@ def handler(body):
             "insult": utils.random_insult,
             "card": utils.generate_card,
             "nathan": utils.nathan,
-            "sisters": utils.add_sisters,
+            # "sisters": utils.add_sisters,
             "stock": market.chart_stock,
         }
 

@@ -1,9 +1,10 @@
 """app"""
 __docformat__ = "numpy"
 
-from flask import Flask, request, Response
+from flask import Flask, request, Response, render_template
 
 from bot.views import handler
+from bot import data
 
 app = Flask(__name__)
 
@@ -14,7 +15,7 @@ def index():
         body = request.get_json(force=True)
         handler(body)
         return Response(status=201)
-    return "<h1>Gamestonk GroupmeBot URL</h1>"
+    return render_template("home.html", result=data.options)
 
 
 if __name__ == "__main__":

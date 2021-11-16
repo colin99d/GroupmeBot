@@ -1,7 +1,7 @@
 """Bot views"""
 __docformat__ = "numpy"
 
-from . import data, bible, ESPN, utils, groupme, market
+from . import bible, ESPN, utils, groupme, market
 
 
 def handler(body):
@@ -17,7 +17,7 @@ def handler(body):
             return
 
         message_dict = {
-            "help": "Options:" + "".join([f"\n-{x}" for x in data.options]),
+            "help": "https://mygroupmetestbot.herokuapp.com/",
             ":": bible.text_to_verse,
             "johnny": "Johnny its been years, reproduce already",
             "fantasy": "Stop the steal! The commish allows collusion!!!",

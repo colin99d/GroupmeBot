@@ -98,18 +98,18 @@ players = {
 }
 
 
-options = [
-    "Johnny",
-    "Fantasy",
-    "Scores",
-    "Voyager",
-    "Winner",
-    "Insult",
-    "Card",
-    "Nathan",
-    "<Book Chapter:Verse>",
-    "Stock <ticker>",
-]
+options = {
+    "Johnny": "A command telling Johnny what to do",
+    "Fantasy": "A statement about fantasy",
+    "Scores": "Current scores for fantasy",
+    "Voyager": "Evan's current gain or loss on his voyager stock",
+    "Winner": "The current chance of each eligible player to win the league",
+    "Insult": "A random insult for a random user",
+    "Card": "A card for a random user in the group chat",
+    "Nathan": "Special instructions for Nathan",
+    "<Book Chapter:Verse>": "Provides the text of a given book, chapter, and verse in the bible",
+    "Stock <ticker>": "Provides a graph with closing prices for a given stock",
+}
 
 
 test_add = {

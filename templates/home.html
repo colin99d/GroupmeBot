@@ -1,0 +1,22 @@
+<head>
+    <meta property="og:image" content="https://i.groupme.com/828x828.jpeg.892b291dd29f44888a90e1bb224ebbbf.preview" />
+
+    <meta property="og:description" content="Instructions for using SportsBot." />
+
+    <meta property="og:title" content="SportsBot Documentation" />
+</head>
+
+
+<h1>Sportsbot Help</h1>
+
+<h2>Commands:</h2>
+<ul>
+    {% for key, value in result.items() %}
+
+    <li>
+        <b>{{ key }}:<b>
+       <td> {{ value }}</td>
+    </li>
+
+    {% endfor %}
+</ul>

@@ -40,3 +40,7 @@ def handler(body):
                     elif val(text, group_id) is not None:
                         groupme.send_message(val(text, group_id), group_id)
                     return
+            groupme.send_message(
+                "Invalid command. Call 'help' for a list of commands", group_id
+            )
+            return

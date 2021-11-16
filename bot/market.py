@@ -24,6 +24,8 @@ def chart_stock(text: str, group: str):
     ticker = text.split(" ")[-1]
     stock = yf.Ticker(ticker)
     hist = stock.history(period="1y")
+    if hist["Close"].empty:
+        return f"{ticker.upper()} is not a valid ticker."
     fig, ax = plt.subplots(figsize=(10, 5))
     ax.plot(hist.index, hist["Close"], color="tab:blue", label="Portfolio")
     ax.yaxis.set_major_formatter("${x:1.2f}")

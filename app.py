@@ -15,6 +15,7 @@ def index():
         body = request.get_json(force=True)
         handler(body)
         return Response(status=201)
+    print("Get")
     return render_template("home.html", result=data.options)
 
 

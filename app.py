@@ -1,10 +1,12 @@
 """app"""
 __docformat__ = "numpy"
-
 from flask import Flask, request, Response, render_template
 
 from bot.views import handler
 from bot import data
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -15,7 +17,6 @@ def index():
         body = request.get_json(force=True)
         handler(body)
         return Response(status=201)
-    print("Get")
     return render_template("home.html", result=data.options)
 
 

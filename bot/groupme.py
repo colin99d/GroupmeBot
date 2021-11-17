@@ -7,9 +7,13 @@ import pathlib
 from typing import List, Dict
 
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 base = "https://api.groupme.com/v3"
-end = "?token=85w8CudYavVwkN7YAdOQwSyzXyCYDx7SV9aLBoRL"
+TOKEN = os.getenv("GROUPME_TOKEN")
+end = f"?token={TOKEN}"
 
 
 def get_bot_id(group_id: str) -> str:

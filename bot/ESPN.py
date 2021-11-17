@@ -25,7 +25,6 @@ def get_stat():
 def team_stats():
     url = f"{base}{year}{mid}{ESPN_leagueID}{tail}"
     r = requests.get(url, cookies={"SWID": ESPN_SWID, "espn_s2": ESPN_S2})
-    print(r.json())
     return r.json()["teams"]
 
 

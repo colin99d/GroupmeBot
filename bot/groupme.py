@@ -15,14 +15,10 @@ base = "https://api.groupme.com/v3"
 TOKEN = os.getenv("GROUPME_TOKEN")
 end = f"?token={TOKEN}"
 
-
-def get_bot_id(group_id: str) -> str:
-    if group_id == "69502628":
-        return "5e6fccada121999d1dd6759d7a"
-    elif group_id == "46166401":
-        return "d1d19ce1822d3080e157027858"
-    else:
-        return ""
+group_to_bot = {
+    os.getenv("TEST_GROUP_ID"): os.getenv("TEST_GROUP_BOT"),
+    os.getenv("MAIN_GROUP_ID"): os.getenv("MAIN_GROUP_BOT"),
+}
 
 
 def upload_image(image: str) -> requests.Response:
@@ -39,14 +35,14 @@ def upload_image(image: str) -> requests.Response:
 
 def send_message(message: str, group_id: str) -> requests.Response:
     mid = "/bots/post"
-    bot_id = get_bot_id(group_id)
+    bot_id = group_to_bot[group_id]
     return requests.post(url=f"{base+mid}?bot_id={bot_id}&text={message}")
 
 
 def send_image(image: str, group_id: str, text: str = None) -> requests.Response:
     image_url = upload_image(image).json()["payload"]["picture_url"]
     mid = "/bots/post"
-    bot_id = get_bot_id(group_id)
+    bot_id = group_to_bot[group_id]
     data = {
         "bot_id": bot_id,
         "text": text,

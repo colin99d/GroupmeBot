@@ -2,17 +2,19 @@
 
 This is the GroupmeBot. Once added to a group it allows allows people to interact with it through messages.
 
+## Setup
+
 To function you need to create a .env file in the main directory and set the following variables:
 
-BIBLE_API_KEY=var1
-ESPN_leagueID=var2
-ESPN_SWID=var3
-ESPN_S2=var4
-GROUPME_TOKEN=var5
-MAIN_GROUP_ID=var6
-MAIN_GROUP_BOT=var7
-TEST_GROUP_ID=var8
-TEST_GROUP_BOT=var9
+- BIBLE_API_KEY=var1
+- ESPN_leagueID=var2
+- ESPN_SWID=var3
+- ESPN_S2=var4
+- GROUPME_TOKEN=var5
+- MAIN_GROUP_ID=var6
+- MAIN_GROUP_BOT=var7
+- TEST_GROUP_ID=var8
+- TEST_GROUP_BOT=var9
 
 var1: Go to https://docs.api.bible/ and create an application. Enter the key as var1
 

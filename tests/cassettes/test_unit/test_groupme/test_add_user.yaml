@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.26.0
+    method: GET
+    uri: https://api.groupme.com/v3/groups/69502628?token=85w8CudYavVwkN7YAdOQwSyzXyCYDx7SV9aLBoRL
+  response:
+    body:
+      string: '{"meta":{"code":200},"response":{"id":"69502628","group_id":"69502628","name":"BotTestGroup","phone_number":"+1
+        7693076349","type":"private","description":"","image_url":null,"creator_user_id":"68449690","created_at":1627781795,"updated_at":1637615835,"muted_until":null,"office_mode":false,"share_url":"https://groupme.com/join_group/69502628/qQvLfkEW","share_qr_code_url":"https://image.groupme.com/qr/join_group/69502628/qQvLfkEW/preview","members":[{"user_id":"29762584","nickname":"Colin
+        Delahunty","image_url":"https://i.groupme.com/1024x1024.jpeg.c64d4fc5aeca45cb9fd2c1ca054fc22d","id":"666146052","muted":false,"autokicked":false,"roles":["user"],"name":"Colin
+        Delahunty"},{"user_id":"47806280","nickname":"Evan Parshall","image_url":"https://i.groupme.com/750x750.jpeg.f49b4c25a9b14e94907bfc3c46fea801","id":"666146069","muted":false,"autokicked":false,"roles":["user"],"name":"Evan
+        Parshall"},{"user_id":"68449690","nickname":"zach delahunty","image_url":null,"id":"666177541","muted":false,"autokicked":false,"roles":["admin","owner"],"name":"zach
+        delahunty"}],"messages":{"count":870,"last_message_id":"163761583513216072","last_message_created_at":1637615835,"preview":{"nickname":"SportsBot","text":"WFWEFEWFWE
+        is not a valid ticker.","image_url":"https://i.groupme.com/245x245.jpeg.026c096cdd46475fb5d931006cb95a42","attachments":[]}},"max_members":5000,"theme_name":null,"like_icon":null,"requires_approval":false,"show_join_question":false,"join_question":null,"message_deletion_period":60,"message_deletion_mode":["sender","creator"]}}
+
+        '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1554'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Mon, 22 Nov 2021 21:24:32 GMT
+      access-control-allow-credentials:
+      - 'false'
+      access-control-allow-headers:
+      - Accept, Content-Type, X-Requested-With, X-Access-Token, User-Agent, Pragma,
+        Referrer, Cache-Control, Origin
+      access-control-allow-methods:
+      - POST, GET, PUT, DELETE, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '86400'
+      cache-control:
+      - must-revalidate, private, max-age=0
+      server:
+      - istio-envoy
+      x-envoy-upstream-service-time:
+      - '5'
+      x-gm-request-id:
+      - authproxy:8552ec
+      - authproxy:8552ec.conversations:0b027b
+      x-gm-service:
+      - authproxy-internal
+      - conversations
+    status:
+      code: 200
+      message: OK
+version: 1

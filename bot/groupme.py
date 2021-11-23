@@ -85,18 +85,3 @@ def list_groups():
 def add_user(group: str, packet):
     mid = f"/groups/{group}/members/add"
     requests.post(base + mid + end, data=json.dumps(packet))
-
-
-# Does not work, recipient_id causes issues
-def direct_message(group, user):
-    id = get_id(group, user)
-    mid = "/direct_messages"
-    cap = f"&source_guid=GUID&recipient_id={id}"
-    data = {
-        "direct_message": {
-            "source_guid": "GUID",
-            "recipient_id": f"{id}",
-            "text": "Do you put out?",
-        }
-    }
-    data = requests.post(base + mid + end + cap, data=json.dumps(data))

@@ -36,6 +36,7 @@ def text_to_verse(text, *args):
     try:
         if "@sportsbot " in text:
             text = text.replace("@sportsbot ", "")
+        text = text.replace("bible", "")
         books = get_books()
         book_list = [x["name"].lower() for x in books]
         book = " ".join(text.split()[:-1]).strip()

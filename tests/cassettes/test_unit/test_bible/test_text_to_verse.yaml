@@ -1,0 +1,131 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.26.0
+      api-key:
+      - 6a277702e54a68a939bdcf8c693d5f66
+    method: GET
+    uri: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/books
+  response:
+    body:
+      string: !!binary |
+        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
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 22 Nov 2021 13:17:41 GMT
+      Server:
+      - nginx/1.16.1
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - WWW-Authenticate,Server-Authorization
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      vary:
+      - origin,accept-encoding
+      x-request-wants-bypass:
+      - static
+      x-server-allows-bypass:
+      - static
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.26.0
+      api-key:
+      - 6a277702e54a68a939bdcf8c693d5f66
+    method: GET
+    uri: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/JHN.3.16
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA7VU23LbNhD9lQ1fZE9EUpfIjmRJnURNWzmtmxlP8sSZDggsRSQkwACgaNXRb/UD
+        +mVdUJST2MmM81A9aBYHexZnb7wNBHMsmN0GUgSz4PK3q2gcDc+CfqDNZn0PSrX+cMToyHNWOTSf
+        vbyLTAtsEYHPcDhi2Xk2ep5NptNwMKJ7gxkaVBw9R+cKxrM2NNfKoXKEzivgBbN2kQRVEizntmIK
+        vMhQ1WWKhvDhWRIcICsFnenxNg6hR+qWqMOzeezZXYzjVfOe7v79B37RBn7VAqyGQm9RgMsRGm0K
+        0SeTOaDjhm0RcmlBq2IHKW60I5lwrVXn0+TaatyioctCkuFykIooJdhc14UApR1UaKTN+5DWFNWH
+        9AyS46TaQCEzjDqlMI+rJZWDri2udO0rMvTVqXZGbnJfn0TB3e9LG+DN25e/r1fw859/vFhfAd5w
+        rJwX4/N6q6SjFF/Tg0KXfdJNbQAGK6MbBatjfGBVRWlYcBoqI1Ur0PNfX76L4BqpGM5Vszhumibi
+        rEyNFBuMaFZilurahbWNqSRhgyEzGH+sEZUN20iUUVgx3+TPqilThTfu/vide7xtNmF02veDyuBW
+        6tred5185ToJ9uRb4mGis7q0fqAsN7Jyy0RtmYG/Xr54s160/58+3e4vEiWzE7erUGcnLRq508Vi
+        0auVwEwqFL3T20QJzeuSpEeNoTqe9JLkZrw6xAVrOE1V7+mdT6E5c1KrqDLaaa6Lp7045kJFB0Jt
+        MGKVjNpVib3I9m87ikqpovc2CXz0V+0T8YHSAr3Ti/0DJQfn1RduXRInvckkm4xHzwfhaILn4TOe
+        8ZBxcRZOz0cCB2KK0zGnmA/eSQIC1byDlnOlj5YsN122fgosjYEYs5H+wAtd48fdTeQNkRna5Uih
+        i1U2/MktHieEdjdHP4J+v+nQSOHyzk61Ee3iD+jACu9ChnW7Ar2WljaDwcWB5C26jpfz+E46TYmv
+        cftheoyczv/SrhUvauG/Vo9v4B2ZWN8auYcD9+TreYMf7SHsuzev9HUr0Y/9t7qVuo37ux5zJ5rv
+        dOsxL/4PvaLF/Q9S1djviwYAAA==
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 22 Nov 2021 13:17:42 GMT
+      Server:
+      - nginx/1.16.1
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - WWW-Authenticate,Server-Authorization
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      vary:
+      - origin,accept-encoding
+      x-request-wants-bypass:
+      - static
+      x-server-allows-bypass:
+      - static
+    status:
+      code: 200
+      message: OK
+version: 1

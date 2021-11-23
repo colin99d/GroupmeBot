@@ -1,0 +1,9 @@
+{
+    "Scores": "Current scores for fantasy",
+    "Voyager": "Evan's current gain or loss on his voyager stock",
+    "Winner": "The current chance of each eligible player to win the league",
+    "Insult": "A random insult for a random user",
+    "Card": "A card for a random user in the group chat",
+    "Bible <Book Chapter:Verse>": "Provides the text of a given book, chapter, and verse in the bible",
+    "Stock <ticker>": "Provides a graph with closing prices for a given stock"
+}

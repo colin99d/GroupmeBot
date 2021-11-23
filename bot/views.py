@@ -18,16 +18,12 @@ def handler(body):
 
         message_dict = {
             "help": "https://mygroupmetestbot.herokuapp.com/",
-            ":": bible.text_to_verse,
-            "johnny": "Johnny its been years, reproduce already",
-            "fantasy": "Stop the steal! The commish allows collusion!!!",
+            "bible": bible.text_to_verse,
             "scores": ESPN.get_standings,
             "voyager": market.evan_voyager,
             "winner": ESPN.win_chance,
             "insult": utils.random_insult,
             "card": utils.generate_card,
-            "nathan": utils.nathan,
-            # "sisters": utils.add_sisters,
             "stock": market.chart_stock,
         }
 

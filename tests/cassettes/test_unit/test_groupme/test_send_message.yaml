@@ -1,0 +1,60 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.26.0
+    method: POST
+    uri: https://api.groupme.com/v3/bots/post?bot_id=5e6fccada121999d1dd6759d7a&text=AlecH.jpeg
+  response:
+    body:
+      string: ''
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - text/html
+      Date:
+      - Mon, 22 Nov 2021 21:06:08 GMT
+      cache-control:
+      - no-cache
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      server:
+      - istio-envoy
+      set-cookie:
+      - _g=UTFYWWY3MmxpZmdRWmJzVmhqc0J3SE1rZit2bHJsYnlPVExKc2xzdUJsYmQvdFo0bXdaY2dtK2lWRnQxcFlrNjZWbXlXWkVJMmh0azlIaytNN3VFZVcvMExoaFhkS3JISHNNdG83VTZsRklZZElCNkd3SUxxN1FFQjY3ZXQ2YkEtLXgxcGVjY0J2K2dQY2J6RnhVa2JjL0E9PQ%3D%3D--9242fdf2392ed1b9cf6e459c50dac49d24b9e0b2;
+        domain=.groupme.com; path=/; HttpOnly
+      x-content-type-options:
+      - nosniff
+      x-download-options:
+      - noopen
+      x-envoy-upstream-service-time:
+      - '77'
+      x-frame-options:
+      - SAMEORIGIN
+      x-gm-request-id:
+      - authproxy:0c6df0
+      - authproxy:0c6df0.groupme:0b28fb
+      x-gm-service:
+      - authproxy-internal
+      x-permitted-cross-domain-policies:
+      - none
+      x-runtime:
+      - '0.076001'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 202
+      message: Accepted
+version: 1

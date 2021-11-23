@@ -205,17 +205,27 @@ class TestGroupme(unittest.TestCase):
         "tests/cassettes/test_unit/test_groupme/test_send_image.yaml",
         record_mode="new_episodes",
     )
-    def test_send_image(self):
-        post = groupme.send_image("AlecH.jpeg", os.getenv("TEST_GROUP_ID"))
-        self.assertEqual(post.status_code, 202)
+    @check_print(
+        assert_in="https://dbukjj6eu5tsf.cloudfront.net/gopsusports.com/images/2018/5/2/10251682.jpeg"
+    )
+    @patch("bot.groupme.send_image", side_effect=return_vals)
+    def test_send_image(self, _):
+        groupme.send_image(
+            "https://dbukjj6eu5tsf.cloudfront.net/gopsusports.com/images/2018/5/2/10251682.jpeg",
+            os.getenv("TEST_GROUP_ID"),
+        )
 
     @vcr.use_cassette(
         "tests/cassettes/test_unit/test_groupme/test_send_message.yaml",
         record_mode="new_episodes",
     )
-    def test_send_message(self):
-        post = groupme.send_message("AlecH.jpeg", os.getenv("TEST_GROUP_ID"))
-        self.assertEqual(post.status_code, 202)
+    @check_print()
+    @patch("bot.groupme.send_image", side_effect=return_vals)
+    def test_send_message(self, _):
+        groupme.send_message(
+            "https://dbukjj6eu5tsf.cloudfront.net/gopsusports.com/images/2018/5/2/10251682.jpeg",
+            os.getenv("TEST_GROUP_ID"),
+        )
 
     @vcr.use_cassette(
         "tests/cassettes/test_unit/test_groupme/test_remove_user.yaml",

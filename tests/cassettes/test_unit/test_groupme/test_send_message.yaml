@@ -57,4 +57,62 @@ interactions:
     status:
       code: 202
       message: Accepted
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate, br
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      User-Agent:
+      - python-requests/2.26.0
+    method: POST
+    uri: https://api.groupme.com/v3/bots/post?bot_id=5e6fccada121999d1dd6759d7a&text=https://dbukjj6eu5tsf.cloudfront.net/gopsusports.com/images/2018/5/2/10251682.jpeg
+  response:
+    body:
+      string: ''
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      Content-Type:
+      - text/html
+      Date:
+      - Tue, 23 Nov 2021 02:53:39 GMT
+      cache-control:
+      - no-cache
+      referrer-policy:
+      - strict-origin-when-cross-origin
+      server:
+      - istio-envoy
+      set-cookie:
+      - _g=Wm5xRjFDSFRsVWdUcUhVK0ZvM3FhcHlmQlU3Nll0LzIzSmtXUGJvZWlvZ0JMUWpOdGwzOGRJNHl2RG02M3dwWC9pVy9Vcm9NZmdMWjZETVd5NWkwc2tVRkRtZ1FRWi9GWmxOMkdnV3ViamlQZVF6b2pKbG51ZDY2aHM0cUJFaGctLTkrVHc2ZTdWNlp0S3l6anhKK2tLTFE9PQ%3D%3D--b8c18af70c39ae9c5ae254eed4af2554ec2bb758;
+        domain=.groupme.com; path=/; HttpOnly
+      x-content-type-options:
+      - nosniff
+      x-download-options:
+      - noopen
+      x-envoy-upstream-service-time:
+      - '115'
+      x-frame-options:
+      - SAMEORIGIN
+      x-gm-request-id:
+      - authproxy:211557
+      - authproxy:211557.groupme:ba5454
+      x-gm-service:
+      - authproxy-internal
+      x-permitted-cross-domain-policies:
+      - none
+      x-runtime:
+      - '0.105824'
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 202
+      message: Accepted
 version: 1

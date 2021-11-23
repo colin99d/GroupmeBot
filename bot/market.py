@@ -30,5 +30,5 @@ def chart_stock(text: str, group: str):
     ax.plot(hist.index, hist["Close"], color="tab:blue", label="Portfolio")
     ax.yaxis.set_major_formatter("${x:1.2f}")
     ax.set_title(f"Ending prices for {ticker.upper()}")
-    fig.savefig("images/chart.png", format="png")
-    groupme.send_image("chart.png", group)
+    fig.savefig("chart.png", format="png")
+    groupme.send_image("chart.png", group, "", True)

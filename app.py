@@ -65,17 +65,17 @@ if __name__ == "__main__":
 
 
 def add_post(body):
-    avatar_url = body.get("avatar_url").strip()
-    created_at = body.get("created_at").strip()
-    group_id = body.get("group_id").strip()
-    id = body.get("id").strip()
-    name = body.get("name").strip()
-    sender_id = body.get("sender_id").strip()
-    sender_type = body.get("sender_type").strip()
-    source_guid = body.get("source_guid").strip()
+    avatar_url = str(body.get("avatar_url")).strip()
+    created_at = str(body.get("created_at")).strip()
+    group_id = str(body.get("group_id")).strip()
+    id = str(body.get("id")).strip()
+    name = str(body.get("name")).strip()
+    sender_id = str(body.get("sender_id")).strip()
+    sender_type = str(body.get("sender_type")).strip()
+    source_guid = str(body.get("source_guid")).strip()
     system = body.get("system")
-    text = body.get("text").strip()
-    user_id = body.get("user_id").strip()
+    text = str(body.get("text")).strip()
+    user_id = str(body.get("user_id")).strip()
     message = Post(
         avatar_url=avatar_url,
         created_at=created_at,

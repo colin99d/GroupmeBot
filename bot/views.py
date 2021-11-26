@@ -25,6 +25,7 @@ def handler(body):
             "insult": utils.random_insult,
             "card": utils.generate_card,
             "stock": market.chart_stock,
+            "stats": utils.handle_stats,
         }
 
         if "@sportsbot" in text:

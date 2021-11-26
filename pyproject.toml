@@ -16,6 +16,7 @@ matplotlib = "^3.4.3"
 python-dotenv = "^0.19.2"
 Flask-SQLAlchemy = "^2.5.1"
 psycopg2-binary = "^2.9.2"
+Flask-Migrate = "^3.1.0"
 
 [tool.poetry.dev-dependencies]
 

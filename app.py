@@ -4,42 +4,20 @@ import json
 import os
 
 from flask import Flask, request, Response, render_template
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.ext.declarative import DeclarativeMeta
+from flask_migrate import Migrate
 
 from bot.views import handler
+from bot.models import db, Post
 from dotenv import load_dotenv
 
 load_dotenv()
 
 app = Flask(__name__)
+
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
-
-# Models
-BaseModel: DeclarativeMeta = db.Model
-
-
-class Post(BaseModel):
-    pk = db.Column(db.Integer, primary_key=True, nullable=False)
-    avatar_url = db.Column(db.String(120))
-    created_at = db.Column(db.String(350))
-    group_id = db.Column(db.String(350))
-    id = db.Column(db.String(350))
-    name = db.Column(db.String(350))
-    sender_id = db.Column(db.String(350))
-    sender_type = db.Column(db.String(350))
-    source_guid = db.Column(db.String(350))
-    system = db.Column(db.Boolean)
-    text = db.Column(db.String(1000))
-    user_id = db.Column(db.String(350))
-
-    def __repr__(self):
-        return f"{self.text}"
-
-
-# Views
+db.init_app(app)
+migrate = Migrate(app, db)
 
 
 @app.route("/", methods=["POST", "GET"])

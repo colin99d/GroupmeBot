@@ -6,8 +6,9 @@ import html
 from random import randint
 
 import requests
+from sqlalchemy import func
 
-from . import groupme
+from . import groupme, models
 
 
 def get_random(lst):
@@ -38,3 +39,12 @@ def generate_card(_, group_id):
         f"\n{p['Description']}\n\nStrengths:\n{strengths}\nWeaknesses:\n{weaknesses}"
     )
     groupme.send_image(p["image"], group_id, selection)
+
+
+def handle_stats(_, group_id):
+    query = (
+        models.db.session.query(models.Post.name, func.count(models.Post.name))
+        .group_by(models.Post.name)
+        .filter_by(group_id=group_id)
+    )
+    return query.all()

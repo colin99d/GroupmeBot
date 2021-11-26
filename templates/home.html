@@ -18,6 +18,20 @@
             integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
             crossorigin="anonymous"
         />
+        <style>
+            #circle {
+                position: absolute;
+                top: 30%;
+                left: 52%;
+                transform: translate(-50%, -50%);
+                width: 2vw;
+                height: 2vw;
+                -webkit-border-radius: 25px;
+                -moz-border-radius: 25px;
+                border-radius: 25px;
+                background: red;
+            }
+        </style>
     </head>
   <body style="background-image: url('https://www.purdue.edu/futureengineers/virtual-experience/images/videos/majors/ME_Evan_Parshall.png');background-size: 100% 100%">
 
@@ -35,6 +49,8 @@
         </div>
 
     </main>
+
+    <div onclick="function hi(){window.location.assign('/messages')};hi()"id="circle"></div>
 
 
    <!-- JavaScript Bundle with Popper -->

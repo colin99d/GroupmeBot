@@ -24,16 +24,16 @@ BaseModel: DeclarativeMeta = db.Model
 class Post(BaseModel):
     pk = db.Column(db.Integer, primary_key=True, nullable=False)
     avatar_url = db.Column(db.String(120))
-    created_at = db.Column(db.String(35))
-    group_id = db.Column(db.String(35))
-    id = db.Column(db.String(35))
-    name = db.Column(db.String(35))
-    sender_id = db.Column(db.String(35))
-    sender_type = db.Column(db.String(35))
-    source_guid = db.Column(db.String(35))
+    created_at = db.Column(db.String(350))
+    group_id = db.Column(db.String(350))
+    id = db.Column(db.String(350))
+    name = db.Column(db.String(350))
+    sender_id = db.Column(db.String(350))
+    sender_type = db.Column(db.String(350))
+    source_guid = db.Column(db.String(350))
     system = db.Column(db.Boolean)
     text = db.Column(db.String(1000))
-    user_id = db.Column(db.String(35))
+    user_id = db.Column(db.String(350))
 
     def __repr__(self):
         return f"{self.text}"

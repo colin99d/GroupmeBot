@@ -47,4 +47,7 @@ def handle_stats(_, group_id):
         .group_by(models.Post.name)
         .filter_by(group_id=group_id)
     )
-    return query.all()
+    string = "Messages by user:"
+    for item in query.all():
+        string += f"\n{item[0]} {item[1]}"
+    return string

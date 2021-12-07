@@ -24,3 +24,8 @@ def check_print(assert_in: str = "", length: int = -1):
         return wrapper
 
     return checker
+
+
+def return_vals(*args, **_):
+    for arg in args:
+        print(arg)

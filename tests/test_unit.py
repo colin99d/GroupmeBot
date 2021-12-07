@@ -8,7 +8,7 @@ import os
 import vcr
 
 from bot import bible, ESPN, utils, market, groupme
-from tests.helpers import check_print
+from tests.helpers import check_print, return_vals
 
 # from bot.models import db, Post
 from app import app
@@ -29,11 +29,6 @@ def get_post(message):
         "text": f"@SportsBot {message}",
         "user_id": "29762584",
     }
-
-
-def return_vals(*args, **_):
-    for arg in args:
-        print(arg)
 
 
 class TestBible(unittest.TestCase):
@@ -151,6 +146,16 @@ class TestFlask(unittest.TestCase):
     @patch("bot.groupme.send_message", side_effect=return_vals)
     def test_bible(self, _):
         data = get_post("bible john 3:16")
+        self.client.post("/", json=data)
+
+    def test_messages(self):
+        response = self.client.get("/messages")
+        self.assertIn("Message History", str(response.data))
+
+    @check_print(assert_in="Messages by user:")
+    @patch("bot.groupme.send_message", side_effect=return_vals)
+    def test_handle_stats(self, _):
+        data = get_post("stats")
         self.client.post("/", json=data)
 
     """

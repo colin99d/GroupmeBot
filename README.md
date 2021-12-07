@@ -15,6 +15,7 @@ To function you need to create a .env file in the main directory and set the fol
 - MAIN_GROUP_BOT=var7
 - TEST_GROUP_ID=var8
 - TEST_GROUP_BOT=var9
+- SQLALCHEMY_DATABASE_URI=var10
 
 var1: Go to https://docs.api.bible/ and create an application. Enter the key as var1
 
@@ -35,3 +36,19 @@ Create the main bot at: https://dev.groupme.com/bots/new, then navigate to: http
 If you want a second bot to test commands before using them in the main chat create another bot.
 - var8: The Group ID column
 - var9: The Bot ID column
+
+var10: This is the URI for the database. Either copy and paste the Heroku database URI or use: sqlite:////tmp/test.db for local development
+
+## Running Server
+This program uses Flask. To start the app type `flask run`
+**Note**: To always start the flask run in development run add `FLASK_ENV=development1` to your .env file
+
+To apply any changes made to your database run `flask db upgrade`
+
+## Testing
+To use Pytest run `pytest tests/`
+
+If you would like to see a coverage report use the following steps:
+1. Run `coverage run -m pytest`
+2. Run `coverage html`
+3. Go to htmlcov/index.html and open the file

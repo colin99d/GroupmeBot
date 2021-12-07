@@ -5,5 +5,6 @@
     "Insult": "A random insult for a random user",
     "Card": "A card for a random user in the group chat",
     "Bible <Book Chapter:Verse>": "Provides the text of a given book, chapter, and verse in the bible",
-    "Stock <ticker>": "Provides a graph with closing prices for a given stock"
+    "Stock <ticker>": "Provides a graph with closing prices for a given stock",
+    "Stats": "Provides basic statistics for each user in the group chat"
 }

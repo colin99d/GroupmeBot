@@ -9,6 +9,8 @@ import vcr
 
 from bot import bible, ESPN, utils, market, groupme
 from tests.helpers import check_print
+
+# from bot.models import db, Post
 from app import app
 
 
@@ -150,6 +152,27 @@ class TestFlask(unittest.TestCase):
     def test_bible(self, _):
         data = get_post("bible john 3:16")
         self.client.post("/", json=data)
+
+    """
+    def test_store_post(self):
+        message = Post(
+            avatar_url="https://www.google.com",
+            created_at=234243243,
+            group_id=2234324214,
+            id=2342342323424,
+            name="Willy Wonka",
+            sender_id=234235344,
+            sender_type="User",
+            source_guid="fwfwefwefwefwefwefwefewf",
+            system=True,
+            text="Hello fine sir how are you doing today?",
+            user_id=2343242423,
+        )
+        db.session.add(message)
+        db.session.commit()
+        query = Post.query.all()
+        self.assertIn("https://www.google.com", str(query))
+        """
 
 
 class TestUtils(unittest.TestCase):

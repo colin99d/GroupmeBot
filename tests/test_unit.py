@@ -8,27 +8,10 @@ import os
 import vcr
 
 from bot import bible, ESPN, utils, market, groupme
-from tests.helpers import check_print, return_vals
+from tests.helpers import check_print, return_vals, get_post
 
 # from bot.models import db, Post
 from app import app
-
-
-def get_post(message):
-    return {
-        "attachments": [],
-        "avatar_url": "https://i.groupme.com/1024x1024.jpeg.c64d4fc5aeca45cb9fd2c1ca054fc22d",
-        "created_at": "1632929238",
-        "group_id": "69502628",
-        "id": "163292923878111513",
-        "name": "Colin Delahunty",
-        "sender_id": "29762584",
-        "sender_type": "user",
-        "source_guid": "baac853e03cdf5d1d1ff77f105711ef3",
-        "system": False,
-        "text": f"@SportsBot {message}",
-        "user_id": "29762584",
-    }
 
 
 class TestBible(unittest.TestCase):

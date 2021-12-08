@@ -6,7 +6,7 @@ import html
 from random import randint
 
 import requests
-from sqlalchemy import func
+from sqlalchemy import func, desc
 
 from . import groupme, models
 
@@ -43,9 +43,12 @@ def generate_card(_, group_id):
 
 def handle_stats(_, group_id):
     query = (
-        models.db.session.query(models.Post.name, func.count(models.Post.name))
+        models.db.session.query(
+            models.Post.name, func.count(models.Post.name).label("name_count")
+        )
         .group_by(models.Post.name)
         .filter_by(group_id=group_id)
+        .order_by(desc("name_count"))
     )
     string = "Messages by user:"
     for item in query.all():

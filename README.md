@@ -1,6 +1,6 @@
 # GroupmeBot
 
-This is the GroupmeBot. Once added to a group it allows allows people to interact with it through messages.
+This is the GroupmeBot. Once added to a group it allows people to interact with it through messages.
 
 ## Setup
 

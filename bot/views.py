@@ -24,8 +24,8 @@ def index():
     return render_template("home.html", result=options)
 
 
-@login_required
 @bot.route("/messages", methods=["GET"])
+@login_required
 def messages():
     if request.method == "GET":
         return render_template("messages.html", users=Post.query.all())

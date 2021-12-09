@@ -1,10 +1,34 @@
 """Bot views"""
 __docformat__ = "numpy"
-# from flask import Blueprint
+import json
 
+from flask import request, Response, render_template
+from flask_login import login_required
+from flask import Blueprint
+
+from bot.models import db, Post
 from . import bible, ESPN, utils, groupme, market
 
-# bot = Blueprint('bot', __name__)
+bot = Blueprint("bot", __name__)
+
+
+@bot.route("/", methods=["POST", "GET"])
+def index():
+    if request.method == "POST":
+        body = request.get_json(force=True)
+        handler(body)
+        add_post(body)
+        return Response(status=201)
+    with open("bot/data/options.json") as json_file:
+        options = json.load(json_file)
+    return render_template("home.html", result=options)
+
+
+@login_required
+@bot.route("/messages", methods=["GET"])
+def messages():
+    if request.method == "GET":
+        return render_template("messages.html", users=Post.query.all())
 
 
 def handler(body):
@@ -44,3 +68,32 @@ def handler(body):
                 "Invalid command. Call 'help' for a list of commands", group_id
             )
             return
+
+
+def add_post(body):
+    avatar_url = str(body.get("avatar_url")).strip()
+    created_at = str(body.get("created_at")).strip()
+    group_id = str(body.get("group_id")).strip()
+    id = str(body.get("id")).strip()
+    name = str(body.get("name")).strip()
+    sender_id = str(body.get("sender_id")).strip()
+    sender_type = str(body.get("sender_type")).strip()
+    source_guid = str(body.get("source_guid")).strip()
+    system = body.get("system")
+    text = str(body.get("text")).strip()
+    user_id = str(body.get("user_id")).strip()
+    message = Post(
+        avatar_url=avatar_url,
+        created_at=created_at,
+        group_id=group_id,
+        id=id,
+        name=name,
+        sender_id=sender_id,
+        sender_type=sender_type,
+        source_guid=source_guid,
+        system=system,
+        text=text,
+        user_id=user_id,
+    )
+    db.session.add(message)
+    db.session.commit()

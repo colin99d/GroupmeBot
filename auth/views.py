@@ -1,3 +1,6 @@
+"""auth.views"""
+__docformat__ = "numpy"
+
 from bot.models import db
 from bot.models import User
 from flask import Blueprint

@@ -1,4 +1,4 @@
-"""Bot views"""
+"""bot.views"""
 __docformat__ = "numpy"
 import json
 

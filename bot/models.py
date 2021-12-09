@@ -1,6 +1,7 @@
 """Models"""
 __docformat__ = "numpy"
 
+from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.ext.declarative import DeclarativeMeta
 
@@ -25,3 +26,10 @@ class Post(BaseModel):
 
     def __repr__(self):
         return f"{self.text}"
+
+
+class User(UserMixin, BaseModel):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), unique=True)
+    password = db.Column(db.String(100))
+    name = db.Column(db.String(1000))

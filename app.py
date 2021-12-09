@@ -5,19 +5,35 @@ import os
 
 from flask import Flask, request, Response, render_template
 from flask_migrate import Migrate
+from flask_login import LoginManager, login_required
+from dotenv import load_dotenv
 
 from bot.views import handler
-from bot.models import db, Post
-from dotenv import load_dotenv
+from bot.models import db, Post, User
+from auth.views import auth
+
 
 load_dotenv()
 
+
 app = Flask(__name__)
+app.register_blueprint(auth)
+
+login_manager = LoginManager()
+login_manager.login_view = "auth.login"
+login_manager.init_app(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("SQLALCHEMY_DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.secret_key = os.getenv("SECRET_KEY")
+login_manager.init_app(app)
 db.init_app(app)
 migrate = Migrate(app, db)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -32,6 +48,7 @@ def index():
     return render_template("home.html", result=options)
 
 
+@login_required
 @app.route("/messages", methods=["GET"])
 def messages():
     if request.method == "GET":

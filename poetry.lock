@@ -120,6 +120,17 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-login"
+version = "0.5.0"
+description = "User session management for Flask"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Flask = "*"
+
+[[package]]
 name = "flask-migrate"
 version = "3.1.0"
 description = "SQLAlchemy database migrations for Flask applications using Alembic."
@@ -514,7 +525,7 @@ requests = ">=2.20"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "ff6e71b2e2c1af29d851d3c688e1b37c60a8363ab9b947f74149d9c4a3dee35b"
+content-hash = "4d11763a3c43efc12a1f159af4d470858cc36a600622dff6347e0436b7e186a6"
 
 [metadata.files]
 alembic = [
@@ -552,6 +563,10 @@ cycler = [
 flask = [
     {file = "Flask-2.0.2-py3-none-any.whl", hash = "sha256:cb90f62f1d8e4dc4621f52106613488b5ba826b2e1e10a33eac92f723093ab6a"},
     {file = "Flask-2.0.2.tar.gz", hash = "sha256:7b2fb8e934ddd50731893bdcdb00fc8c0315916f9fcd50d22c7cc1a95ab634e2"},
+]
+flask-login = [
+    {file = "Flask-Login-0.5.0.tar.gz", hash = "sha256:6d33aef15b5bcead780acc339464aae8a6e28f13c90d8b1cf9de8b549d1c0b4b"},
+    {file = "Flask_Login-0.5.0-py2.py3-none-any.whl", hash = "sha256:7451b5001e17837ba58945aead261ba425fdf7b4f0448777e597ddab39f4fba0"},
 ]
 flask-migrate = [
     {file = "Flask-Migrate-3.1.0.tar.gz", hash = "sha256:57d6060839e3a7f150eaab6fe4e726d9e3e7cffe2150fb223d73f92421c6d1d9"},

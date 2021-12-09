@@ -1,7 +1,10 @@
 """Bot views"""
 __docformat__ = "numpy"
+# from flask import Blueprint
 
 from . import bible, ESPN, utils, groupme, market
+
+# bot = Blueprint('bot', __name__)
 
 
 def handler(body):

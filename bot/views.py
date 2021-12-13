@@ -6,10 +6,22 @@ from flask import request, Response, render_template
 from flask_login import login_required
 from flask import Blueprint
 
-from bot.models import db, Post
+from bot.models import Post
 from . import bible, ESPN, utils, groupme, market
 
 bot = Blueprint("bot", __name__)
+
+message_dict = {
+    "help": "https://mygroupmetestbot.herokuapp.com/",
+    "bible": bible.text_to_verse,
+    "scores": ESPN.get_standings,
+    "voyager": market.evan_voyager,
+    "winner": ESPN.win_chance,
+    "insult": utils.random_insult,
+    "card": utils.generate_card,
+    "stock": market.chart_stock,
+    "stats": utils.handle_stats,
+}
 
 
 @bot.route("/", methods=["POST", "GET"])
@@ -17,8 +29,9 @@ def index():
     if request.method == "POST":
         body = request.get_json(force=True)
         handler(body)
-        add_post(body)
+        utils.add_post(body)
         return Response(status=201)
+
     with open("bot/data/options.json") as json_file:
         options = json.load(json_file)
     return render_template("home.html", result=options)
@@ -43,18 +56,6 @@ def handler(body):
             groupme.remove_user(group_id, user_id)
             return
 
-        message_dict = {
-            "help": "https://mygroupmetestbot.herokuapp.com/",
-            "bible": bible.text_to_verse,
-            "scores": ESPN.get_standings,
-            "voyager": market.evan_voyager,
-            "winner": ESPN.win_chance,
-            "insult": utils.random_insult,
-            "card": utils.generate_card,
-            "stock": market.chart_stock,
-            "stats": utils.handle_stats,
-        }
-
         if "@sportsbot" in text:
             for key in message_dict.keys():
                 if key in text:
@@ -68,32 +69,3 @@ def handler(body):
                 "Invalid command. Call 'help' for a list of commands", group_id
             )
             return
-
-
-def add_post(body):
-    avatar_url = str(body.get("avatar_url")).strip()
-    created_at = str(body.get("created_at")).strip()
-    group_id = str(body.get("group_id")).strip()
-    id = str(body.get("id")).strip()
-    name = str(body.get("name")).strip()
-    sender_id = str(body.get("sender_id")).strip()
-    sender_type = str(body.get("sender_type")).strip()
-    source_guid = str(body.get("source_guid")).strip()
-    system = body.get("system")
-    text = str(body.get("text")).strip()
-    user_id = str(body.get("user_id")).strip()
-    message = Post(
-        avatar_url=avatar_url,
-        created_at=created_at,
-        group_id=group_id,
-        id=id,
-        name=name,
-        sender_id=sender_id,
-        sender_type=sender_type,
-        source_guid=source_guid,
-        system=system,
-        text=text,
-        user_id=user_id,
-    )
-    db.session.add(message)
-    db.session.commit()

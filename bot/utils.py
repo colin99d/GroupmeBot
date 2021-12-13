@@ -9,6 +9,7 @@ import requests
 from sqlalchemy import func, desc
 
 from . import groupme, models
+from bot.models import db, Post
 
 
 def get_random(lst):
@@ -54,3 +55,32 @@ def handle_stats(_, group_id):
     for item in query.all():
         string += f"\n{item[0]} {item[1]}"
     return string
+
+
+def add_post(body):
+    avatar_url = str(body.get("avatar_url")).strip()
+    created_at = str(body.get("created_at")).strip()
+    group_id = str(body.get("group_id")).strip()
+    id = str(body.get("id")).strip()
+    name = str(body.get("name")).strip()
+    sender_id = str(body.get("sender_id")).strip()
+    sender_type = str(body.get("sender_type")).strip()
+    source_guid = str(body.get("source_guid")).strip()
+    system = body.get("system")
+    text = str(body.get("text")).strip()
+    user_id = str(body.get("user_id")).strip()
+    message = Post(
+        avatar_url=avatar_url,
+        created_at=created_at,
+        group_id=group_id,
+        id=id,
+        name=name,
+        sender_id=sender_id,
+        sender_type=sender_type,
+        source_guid=source_guid,
+        system=system,
+        text=text,
+        user_id=user_id,
+    )
+    db.session.add(message)
+    db.session.commit()

@@ -10,8 +10,8 @@ import vcr
 from bot import bible, ESPN, utils, market, groupme
 from tests.helpers import check_print, return_vals, get_post
 
-# from bot.models import db, Post
-from app import app
+# from bot.models import Post
+from app import app as test_app
 
 
 class TestBible(unittest.TestCase):
@@ -92,10 +92,11 @@ class TestESPN(unittest.TestCase):
 
 class TestFlask(unittest.TestCase):
     def setUp(self):
-        app.config["TESTING"] = True
 
-        with app.app_context():
-            with app.test_client() as client:
+        test_app.config["TESTING"] = True
+
+        with test_app.app_context():
+            with test_app.test_client() as client:
                 self.client = client
 
     def test_get_home(self):
@@ -156,11 +157,11 @@ class TestFlask(unittest.TestCase):
             text="Hello fine sir how are you doing today?",
             user_id=2343242423,
         )
-        db.session.add(message)
-        db.session.commit()
+        session.add(message)
+        session.commit()
         query = Post.query.all()
         self.assertIn("https://www.google.com", str(query))
-        """
+    """
 
 
 class TestUtils(unittest.TestCase):

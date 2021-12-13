@@ -11,6 +11,6 @@ POST http://127.0.0.1:5000/
   "sender_type": "user",
   "source_guid": "baac853e03cdf5d1d1ff77f105711ef3",
   "system": false,
-  "text": "@sportsbot stats",
+  "text": "@sportsbot help",
   "user_id": "29762584"
 }

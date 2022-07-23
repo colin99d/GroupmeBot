@@ -1,6 +1,7 @@
 import os
 from typing import Any
 from typing import List
+from typing import Optional
 
 from pydantic import BaseModel
 from pydantic import BaseSettings
@@ -40,6 +41,7 @@ class Settings(BaseSettings):
     TEST_GROUP_BOT: str
     SQLALCHEMY_DATABASE_URI: str
     SECRET_KEY: str
+    PORT: Optional[int] = 8000
 
 
 settings = Settings(_env_file=create_path(".env"))

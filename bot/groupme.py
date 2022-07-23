@@ -8,6 +8,7 @@ import pathlib
 import urllib.request as urllib
 from urllib.request import Request
 from typing import List, Dict
+from functools import cache
 
 import requests
 from .schemas import settings
@@ -23,7 +24,8 @@ group_to_bot = {
 }
 
 
-def upload_image(image: str, local: bool) -> requests.Response:
+@cache
+def upload_image(image: str, local: bool) -> str:
     url = "https://image.groupme.com/pictures"
     headers = {
         "Content-Type": "image/jpeg",
@@ -48,7 +50,8 @@ def upload_image(image: str, local: bool) -> requests.Response:
     req.add_header("Accept-Language", "en-US,en;q=0.8")
     req.add_header("Connection", "keep-alive")
     with urllib.urlopen(req) as data:
-        return requests.post(url, data=io.BytesIO(data.read()), headers=headers)
+        response = requests.post(url, data=io.BytesIO(data.read()), headers=headers)
+        return response.json()["payload"]["picture_url"]
 
 
 def send_message(message: str, group_id: str) -> requests.Response:
@@ -60,7 +63,7 @@ def send_message(message: str, group_id: str) -> requests.Response:
 def send_image(
     image: str, group_id: str, text: str = None, local: bool = False
 ) -> requests.Response:
-    image_url = upload_image(image, local).json()["payload"]["picture_url"]
+    image_url = upload_image(image, local)
     mid = "/bots/post"
     bot_id = group_to_bot[group_id]
     data = {

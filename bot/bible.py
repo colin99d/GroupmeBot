@@ -32,7 +32,7 @@ def get_verse(bookID, chapter, verse):
     return soup.text[len(verse) :]
 
 
-def text_to_verse(text, *args):
+def text_to_verse(text, *_):
     try:
         if "@sportsbot " in text:
             text = text.replace("@sportsbot ", "")

@@ -1,23 +1,23 @@
 """Bot ESPN"""
 __docformat__ = "numpy"
-import os
 
 import requests
+from .schemas import settings
 
-# "&view=mDraftDetail&view=mLiveScoring&view=mMatchupScore&view=mPendingTransactions&view=mPositionalRatings&view=mSettings&view=modular&view=mNav&view=mMatchupScore"
+# &view=mDraftDetail&view=mLiveScoring&view=mMatchupScore&view=mPendingTransactions
+# &view=mPositionalRatings&view=mSettings&view=modular&view=mNav&view=mMatchupScore
 
 base = "http://fantasy.espn.com/apis/v3/games/ffl/seasons/"
 year = "2021"
 mid = "/segments/0/leagues/"
-ESPN_leagueID = os.getenv("ESPN_leagueID")
+ESPN_leagueID = settings.ESPN_leagueID
 tail = "?view=mTeam"
-ESPN_SWID = os.getenv("ESPN_SWID")
-ESPN_S2 = os.getenv("ESPN_S2")
+ESPN_SWID = settings.ESPN_SWID
+ESPN_S2 = settings.ESPN_S2
 
 
 def get_stat():
-    tail = ""
-    url = f"{base}{year}{mid}{ESPN_leagueID}{tail}"
+    url = f"{base}{year}{mid}{ESPN_leagueID}"
     r = requests.get(url, cookies={"SWID": ESPN_SWID, "espn_s2": ESPN_S2})
     return r.json()
 
@@ -28,7 +28,7 @@ def team_stats():
     return r.json()["teams"]
 
 
-def get_standings(*args) -> str:
+def get_standings(*_) -> str:
     d = team_stats()
     d.sort(key=lambda x: x["record"]["overall"]["wins"], reverse=True)
     text = "Name\tW\tL\n"
@@ -43,7 +43,7 @@ def get_standings(*args) -> str:
     return text
 
 
-def win_chance(*args) -> str:
+def win_chance(*_) -> str:
     d = team_stats()
     total = d[0]["record"]["overall"]["losses"]
     total += d[0]["record"]["overall"]["wins"]

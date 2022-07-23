@@ -2,24 +2,24 @@
 __docformat__ = "numpy"
 
 import json
-import os
 import io
+import os
 import pathlib
 import urllib.request as urllib
+from urllib.request import Request
 from typing import List, Dict
 
 import requests
-from dotenv import load_dotenv
+from .schemas import settings
 
-load_dotenv()
 
 base = "https://api.groupme.com/v3"
-TOKEN = os.getenv("GROUPME_TOKEN")
+TOKEN = settings.GROUPME_TOKEN
 end = f"?token={TOKEN}"
 
 group_to_bot = {
-    os.getenv("TEST_GROUP_ID"): os.getenv("TEST_GROUP_BOT"),
-    os.getenv("MAIN_GROUP_ID"): os.getenv("MAIN_GROUP_BOT"),
+    settings.TEST_GROUP_ID: settings.TEST_GROUP_BOT,
+    settings.MAIN_GROUP_ID: settings.MAIN_GROUP_BOT,
 }
 
 
@@ -33,8 +33,21 @@ def upload_image(image: str, local: bool) -> requests.Response:
         path_string = pathlib.Path(__file__).parent.parent.resolve()
         path = os.path.join(path_string, image)
         return requests.post(url, data=open(path, "rb").read(), headers=headers)
-    else:
-        data = urllib.urlopen(image)
+    req = Request(image)
+    text = "Mozilla/5.0 (Macintosh; Intel Mac"
+    req.add_header(
+        "User-Agent",
+        text
+        + "OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36",
+    )
+    req.add_header(
+        "Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    )
+    req.add_header("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
+    req.add_header("Accept-Encoding", "none")
+    req.add_header("Accept-Language", "en-US,en;q=0.8")
+    req.add_header("Connection", "keep-alive")
+    with urllib.urlopen(req) as data:
         return requests.post(url, data=io.BytesIO(data.read()), headers=headers)
 
 
@@ -72,9 +85,9 @@ def get_id(group: str, user: str) -> str:
 
 
 def remove_user(group: str, user: str) -> None:
-    id = get_id(group, user)
-    mid = f"/groups/{group}/members/{id}/remove"
-    data = {"membership_id": id}
+    user_id = get_id(group, user)
+    mid = f"/groups/{group}/members/{user_id}/remove"
+    data = {"membership_id": user_id}
     requests.post(base + mid + end, data=json.dumps(data))
 
 

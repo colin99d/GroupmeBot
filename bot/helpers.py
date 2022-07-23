@@ -1,15 +1,4 @@
-"""bot.views"""
-__docformat__ = "numpy"
-import json
-
-from flask import request, Response, render_template
-from flask_login import login_required
-from flask import Blueprint
-
-from bot.models import Post
 from . import bible, ESPN, utils, groupme, market
-
-bot = Blueprint("bot", __name__)
 
 message_dict = {
     "help": "https://mygroupmetestbot.herokuapp.com/",
@@ -22,26 +11,6 @@ message_dict = {
     "stock": market.chart_stock,
     "stats": utils.handle_stats,
 }
-
-
-@bot.route("/", methods=["POST", "GET"])
-def index():
-    if request.method == "POST":
-        body = request.get_json(force=True)
-        handler(body)
-        utils.add_post(body)
-        return Response(status=201)
-
-    with open("bot/data/options.json") as json_file:
-        options = json.load(json_file)
-    return render_template("home.html", result=options)
-
-
-@bot.route("/messages", methods=["GET"])
-@login_required
-def messages():
-    if request.method == "GET":
-        return render_template("messages.html", users=Post.query.all())
 
 
 def handler(body):
@@ -57,7 +26,7 @@ def handler(body):
             return
 
         if "@sportsbot" in text:
-            for key in message_dict.keys():
+            for key in message_dict:
                 if key in text:
                     val = message_dict[key]
                     if isinstance(val, str):

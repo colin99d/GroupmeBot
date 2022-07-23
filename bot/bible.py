@@ -1,13 +1,13 @@
 """Bible"""
 __docformat__ = "numpy"
-import os
 
 import requests
 from bs4 import BeautifulSoup
+from .schemas import settings
 
 base = "https://api.scripture.api.bible/v1/bibles/"
 version = "de4e12af7f28f599-02"
-BIBLE_API_KEY = os.getenv("BIBLE_API_KEY")
+BIBLE_API_KEY = settings.BIBLE_API_KEY
 
 
 def get_books():

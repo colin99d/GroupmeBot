@@ -4,12 +4,12 @@ import json
 
 import html
 from random import randint
+from sqlalchemy.orm import Session
 
 import requests
 from sqlalchemy import func, desc
 
-from . import groupme, models
-from bot.models import db, Post
+from . import groupme, models, schemas
 
 
 def get_random(lst):
@@ -57,30 +57,19 @@ def handle_stats(_, group_id):
     return string
 
 
-def add_post(body):
-    avatar_url = str(body.get("avatar_url")).strip()
-    created_at = str(body.get("created_at")).strip()
-    group_id = str(body.get("group_id")).strip()
-    id = str(body.get("id")).strip()
-    name = str(body.get("name")).strip()
-    sender_id = str(body.get("sender_id")).strip()
-    sender_type = str(body.get("sender_type")).strip()
-    source_guid = str(body.get("source_guid")).strip()
-    system = body.get("system")
-    text = str(body.get("text")).strip()
-    user_id = str(body.get("user_id")).strip()
-    message = Post(
-        avatar_url=avatar_url,
-        created_at=created_at,
-        group_id=group_id,
-        id=id,
-        name=name,
-        sender_id=sender_id,
-        sender_type=sender_type,
-        source_guid=source_guid,
-        system=system,
-        text=text,
-        user_id=user_id,
+def add_post(db: Session, body: schemas.Message):
+    message = models.Post(
+        avatar_url=body.avatar_url.strip(),
+        created_at=body.created_at,
+        group_id=body.group_id.strip(),
+        id=body.id.strip(),
+        name=body.name.strip(),
+        sender_id=body.sender_id.strip(),
+        sender_type=body.sender_type.strip(),
+        source_guid=body.source_guid.strip(),
+        system=body.system,
+        text=body.text.strip(),
+        user_id=body.user_id.strip(),
     )
-    db.session.add(message)
-    db.session.commit()
+    db.add(message)
+    db.commit()

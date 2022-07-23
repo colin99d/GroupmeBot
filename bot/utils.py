@@ -1,6 +1,7 @@
 """Bot utils"""
 __docformat__ = "numpy"
 import json
+from urllib.error import HTTPError
 
 import html
 from random import randint
@@ -39,7 +40,10 @@ def generate_card(_, group_id):
     selection += (
         f"\n{p['Description']}\n\nStrengths:\n{strengths}\nWeaknesses:\n{weaknesses}"
     )
-    groupme.send_image(p["image"], group_id, selection)
+    try:
+        groupme.send_image(p["image"], group_id, selection)
+    except HTTPError:
+        groupme.send_message(selection, group_id)
 
 
 def handle_stats(_, group_id):

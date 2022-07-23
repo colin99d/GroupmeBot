@@ -90,5 +90,27 @@
         ],
         "Weaknesses": ["The 'rules'", "SAM", "Appeasing Evan"],
         "image": "https://dbukjj6eu5tsf.cloudfront.net/gopsusports.com/images/2018/5/2/10251682.jpeg"
+    },
+    "Aaron Bennett": {
+        "Description": "A quick boi from Bloomington, Indiana.",
+        "Strengths": [
+            "Can run faster than your mom, and you dad",
+            "Accounting and finance savant",
+            "Probbably the cutest guy in this chat"
+        ],
+        "Weaknesses": ["Terms of service", "College rivalries", "Proof of work"],
+        "image": "https://d3sax14uoqq17.cloudfront.net/images/2021/8/19/Bennett_Aaron_777.jpg"
+    },
+    "Nate Stelflug": {
+        "Description": "An absolute unit hailing from Indianapolis, Indiana",
+        "Strengths": ["Quads", "Medicine", "Triathlon"],
+        "Weaknesses": ["The ol' ball and chain", "Board exams", "Aggressive basketball"],
+        "image": "https://pbs.twimg.com/media/DANfGA9UAAQJRwS?format=jpg&name=large"
+    },
+   "Nick Leahy": {
+        "Description": "A future doctor soon to be residing in Columbus, Ohio",
+        "Strengths": ["Piano", "Beer miles", "The Griddy"],
+        "Weaknesses": ["Knees", "Examination volunteers", "Joints"],
+        "image": "https://pbs.twimg.com/media/DTOYolRXUAAAUBF?format=jpg&name=4096x4096"
     }
 }

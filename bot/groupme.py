@@ -6,6 +6,7 @@ import io
 import os
 import pathlib
 import urllib.request as urllib
+from urllib.request import Request
 from typing import List, Dict
 
 import requests
@@ -32,8 +33,22 @@ def upload_image(image: str, local: bool) -> requests.Response:
         path_string = pathlib.Path(__file__).parent.parent.resolve()
         path = os.path.join(path_string, image)
         return requests.post(url, data=open(path, "rb").read(), headers=headers)
-    data = urllib.urlopen(image)
-    return requests.post(url, data=io.BytesIO(data.read()), headers=headers)
+    req = Request(image)
+    text = "Mozilla/5.0 (Macintosh; Intel Mac"
+    req.add_header(
+        "User-Agent",
+        text
+        + "OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36",
+    )
+    req.add_header(
+        "Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    )
+    req.add_header("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
+    req.add_header("Accept-Encoding", "none")
+    req.add_header("Accept-Language", "en-US,en;q=0.8")
+    req.add_header("Connection", "keep-alive")
+    with urllib.urlopen(req) as data:
+        return requests.post(url, data=io.BytesIO(data.read()), headers=headers)
 
 
 def send_message(message: str, group_id: str) -> requests.Response:

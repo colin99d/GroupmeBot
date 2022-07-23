@@ -7,6 +7,7 @@ from . import database
 
 Base: Any = database.Base
 
+
 class Post(Base):
     __tablename__ = "post"
 

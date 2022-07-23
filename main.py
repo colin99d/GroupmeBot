@@ -16,21 +16,31 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 def docs(request: Request):
-    with open("bot/data/options.json", encoding='utf-8') as json_file:
+    with open("bot/data/options.json", encoding="utf-8") as json_file:
         options = json.load(json_file)
-        return templates.TemplateResponse("home.html", {"request": request, "result": options})
+        return templates.TemplateResponse(
+            "home.html", {"request": request, "result": options}
+        )
 
 
 @app.post("/", status_code=200)
-def webhook(message: schemas.Message, db: Session = Depends(database.get_db)):
+def webhook(
+    message: schemas.Message,
+    db: Session = Depends(database.get_db),  # noqa: B008
+):
     helpers.handler(message)
     utils.add_post(db, message)
     return {"message": "success"}
 
 
 @app.get("/messages", response_class=HTMLResponse)
-def messages(request: Request, db: Session = Depends(database.get_db)):
-    return templates.TemplateResponse("messages.html", {"request": request, "users": db.query(models.Post).all()})
+def messages(
+    request: Request,
+    db: Session = Depends(database.get_db),  # noqa: B008
+):
+    return templates.TemplateResponse(
+        "messages.html", {"request": request, "users": db.query(models.Post).all()}
+    )
 
 
 if __name__ == "__main__":

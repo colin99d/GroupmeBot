@@ -1,6 +1,9 @@
 import os
-from typing import List, Any
-from pydantic import BaseModel, BaseSettings
+from typing import Any
+from typing import List
+
+from pydantic import BaseModel
+from pydantic import BaseSettings
 
 
 def create_path(*path: str) -> str:
@@ -8,6 +11,7 @@ def create_path(*path: str) -> str:
     in_between = os.path.dirname(base_path)
     default_path = os.path.join(in_between, *path)
     return default_path
+
 
 class Message(BaseModel):
     attachments: List[Any]

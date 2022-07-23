@@ -30,7 +30,7 @@ def webhook(
 ):
     helpers.handler(message)
     utils.add_post(db, message)
-    return {"message": "success"}
+    return {}
 
 
 @app.get("/messages", response_class=HTMLResponse)

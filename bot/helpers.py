@@ -1,4 +1,9 @@
-from . import bible, ESPN, utils, groupme, market
+from . import bible
+from . import ESPN
+from . import groupme
+from . import market
+from . import schemas
+from . import utils
 
 message_dict = {
     "help": "https://mygroupmetestbot.herokuapp.com/",
@@ -13,11 +18,11 @@ message_dict = {
 }
 
 
-def handler(body):
-    name: str = body.get("name").strip()
-    text: str = body.get("text").strip().lower()
-    user_id: str = body.get("user_id").strip()
-    group_id: str = body.get("group_id").strip()
+def handler(body: schemas.Message):
+    name: str = body.name.strip()
+    text: str = body.text.strip().lower()
+    user_id: str = body.user_id.strip()
+    group_id: str = body.group_id.strip()
 
     if name != "SportsBot":
         if "retard" in text:
@@ -26,9 +31,8 @@ def handler(body):
             return
 
         if "@sportsbot" in text:
-            for key in message_dict:
+            for key, val in message_dict.items():
                 if key in text:
-                    val = message_dict[key]
                     if isinstance(val, str):
                         groupme.send_message(val, group_id)
                     elif val(text, group_id) is not None:

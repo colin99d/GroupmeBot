@@ -1,9 +1,8 @@
-POST http://127.0.0.1:5000/
-
+POST http://127.0.0.1:8000/
 {
   "attachments": [],
   "avatar_url": "https://i.groupme.com/1024x1024.jpeg.c64d4fc5aeca45cb9fd2c1ca054fc22d",
-  "created_at": "1632929238",
+  "created_at": 1632929238,
   "group_id": "69502628",
   "id": "163292923878111513",
   "name": "Colin Delahunty",

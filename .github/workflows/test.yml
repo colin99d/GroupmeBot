@@ -25,7 +25,7 @@ jobs:
       - run: pip install types-pytz types-python-dateutil types-redis types-requests types-ujson
       - run: bandit -x ./tests -r . || true
       - run: black --check .
-      - run: codespell  --quiet-level=2 --skip=.git,*.csv,*.html,*.ini,*.json,*.lock,*.yaml
+      - run: codespell  --quiet-level=2 --skip=.git,*.csv,*.html,*.ini,*.json,*.lock,*.yaml --ignore-words=hist
       - run: mypy --ignore-missing-imports --exclude="/alembic/" .
       - run: shopt -s globstar && pyupgrade --py36-plus **/*.py
       - run: safety check

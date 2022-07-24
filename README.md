@@ -20,7 +20,7 @@ To function you need to create a .env file in the main directory and set the fol
 
 var1: Go to https://docs.api.bible/ and create an application. Enter the key as var1
 
-Then go to ESPN and and go to the overview page for the leage you want to use for the bot. From there get the following variables:
+Then go to ESPN and and go to the overview page for the league you want to use for the bot. From there get the following variables:
 - var2: Look at the url for the current page. This value is the number after '?leagueId='
 
 Before getting the next two variables go to inspect element and then select console. In the browser console paste the following code: function getCookie(name) {const value = `; ${document.cookie}`;const parts = value.split(`; ${name}=`);if (parts.length === 2) return parts.pop().split(';').shift();}

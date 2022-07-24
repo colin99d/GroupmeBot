@@ -28,7 +28,7 @@ def webhook(
     message: schemas.Message,
     db: Session = Depends(database.get_db),  # noqa: B008
 ):
-    helpers.handler(message)
+    helpers.handler(message, db)
     utils.add_post(db, message)
     return {}
 

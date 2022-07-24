@@ -1,3 +1,7 @@
+from typing import Optional
+
+from sqlalchemy.orm import Session
+
 from . import bible
 from . import ESPN
 from . import groupme
@@ -9,20 +13,21 @@ message_dict = {
     "help": "https://mygroupmetestbot.herokuapp.com/",
     "bible": bible.text_to_verse,
     "scores": ESPN.get_standings,
-    "voyager": market.evan_voyager,
     "winner": ESPN.win_chance,
+    "stock": market.chart_stock,
+    "voyager": market.evan_voyager,
     "insult": utils.random_insult,
     "card": utils.generate_card,
-    "stock": market.chart_stock,
     "stats": utils.handle_stats,
 }
 
 
-def handler(body: schemas.Message):
+def handler(body: schemas.Message, db: Session):
     name: str = body.name.strip()
     text: str = body.text.strip().lower()
     user_id: str = body.user_id.strip()
     group_id: str = body.group_id.strip()
+    message: Optional[str] = None
 
     if name != "SportsBot":
         if "retard" in text:
@@ -34,11 +39,11 @@ def handler(body: schemas.Message):
             for key, val in message_dict.items():
                 if key in text:
                     if isinstance(val, str):
-                        groupme.send_message(val, group_id)
-                    elif val(text, group_id) is not None:
-                        groupme.send_message(val(text, group_id), group_id)
-                    return
-            groupme.send_message(
-                "Invalid command. Call 'help' for a list of commands", group_id
-            )
-            return
+                        message = val
+                    elif callable(val):
+                        message = val(text=text, group_id=group_id, db=db)
+                    else:
+                        message = "Invalid command. Call 'help' for a list of commands"
+                    break
+            if message:
+                groupme.send_message(message, group_id)

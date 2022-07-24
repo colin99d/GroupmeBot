@@ -1,0 +1,61 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+      api-key:
+      - DUMMY
+    method: GET
+    uri: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/JHN.3.16
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA7VUwXLbNhD9lQ0vsiciaUqxUsmSOonaJnJaNzOe9MSZDkgsRSQkgACgaMXRb+UD
+        +mVdUJTb2OmMc+iFs3i7b/dhd8HbgDPHgtltIHgwCy5fX0XjKJkEw0CZzfoelCn14YjRMS+Zdmj+
+        ifIhIquwQzg+w2TEiufF6IfifDoNz0bkN1igQZmj56hSwnjWpc6VdCgdoXMNecWsXaSBToPl3Gom
+        wYsMZVNnaAhPJmlwgKzgdKbiXR5Cj9QtUZPJPPbsPsfR1b4n319f4Bdl4JXiYBVUaoscXInQKlPx
+        IZnMAR03bItQCgtKVjvIcKMcyYRrJfuYtlRW4RYNOStBhitBSKLUYEvVVBykcqDRCFsOIWsoq0/p
+        GSTHCbmBShQY9UphHusltYPcFleq8R1JfHf0zohN6fvz9t3LX9cr+On3316srwBvctTOl/Tq30nh
+        6CJvKC1X9ZDUUbOBwcqoVsLqmAWY1iTWglOgjZCdDM9/c/lHBNdIV3ZOz+K4bdsoZ3VmBN9gRBsR
+        s0w1LmxsTBcPWwyZwfhjgyht2GUi3aFm3SiHgcQbd3+1nnu8GyRhdNoPA21wK1Rj74eefxV6Huwp
+        tsbDthZNbf2y2NwI7Zap3DIDf7588Xa96L6fP9/uL1IpihO306iKkw6N3OlisRg0kmMhJPLB6W0q
+        ucqbmgRHraHunQzS9Ga8OuQFa3LamMHTu5hK5cwJJSNtlFO5qp4O4jjnMjoQGoMR0yLqnkHsRXaf
+        7SiqhYze2zTw2X/uSsQHSgcMTi/2D5Qcglf/CusvcTJIktFolGRZyCb5NHzG+BlZk1GYTc/5lE+z
+        LMvHlPNBnTQgUM57aDmX6miJetPf1s/e0vD5mI3Uh7xSDX7c3UTe4IWhdxpJdLEskh/d4nFC6F2W
+        6BfPv106tIK7srczZXj3qM/owCofQoZ1uwq9lo42g7OLA8lb5I6X8/hOOm2J73H303mMnD7+0q5l
+        XjXc/4keP8A7MrG+tXIPF+7J1/sG3ztD2Pc1r9R1J9Gv/bemlbmN+9SMc8fb/5jWYyr+D7Oih/s3
+        fwoXxGcGAAA=
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 23 Jul 2022 23:12:25 GMT
+      Server:
+      - nginx/1.16.1
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - WWW-Authenticate,Server-Authorization
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      vary:
+      - origin,accept-encoding
+      x-request-wants-bypass:
+      - static
+      x-server-allows-bypass:
+      - static
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -28,7 +28,8 @@ def team_stats():
     return r.json()["teams"]
 
 
-def get_standings(*_) -> str:
+def get_standings(*args, **kwargs) -> str:
+    del args, kwargs
     d = team_stats()
     d.sort(key=lambda x: x["record"]["overall"]["wins"], reverse=True)
     text = "Name\tW\tL\n"
@@ -43,7 +44,8 @@ def get_standings(*_) -> str:
     return text
 
 
-def win_chance(*_) -> str:
+def win_chance(**kwargs) -> str:
+    del kwargs
     d = team_stats()
     total = d[0]["record"]["overall"]["losses"]
     total += d[0]["record"]["overall"]["wins"]

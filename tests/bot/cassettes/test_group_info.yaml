@@ -1,0 +1,64 @@
+interactions:
+- request:
+    body: '{"id": "69502628"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '18'
+      User-Agent:
+      - python-requests/2.28.1
+    method: GET
+    uri: https://api.groupme.com/v3/groups/69502628?token=DUMMY
+  response:
+    body:
+      string: '{"meta":{"code":200},"response":{"id":"69502628","group_id":"69502628","name":"BotTestGroup","phone_number":"+1
+        7693076349","type":"private","description":"","image_url":null,"creator_user_id":"68449690","created_at":1627781795,"updated_at":1658617949,"muted_until":null,"office_mode":false,"messages":{"count":1096,"last_message_id":"165861794931486032","last_message_created_at":1658617949,"preview":{"nickname":"SportsBot","text":"https://dbukjj6eu5tsf.cloudfront.net/gopsusports.com/images/2018/5/2/10251682.jpeg","image_url":"https://i.groupme.com/245x245.jpeg.026c096cdd46475fb5d931006cb95a42","attachments":[{"type":"postprocessing","queues":["linked_image"]}]}},"max_members":5000,"theme_name":null,"like_icon":null,"requires_approval":false,"show_join_question":false,"join_question":null,"message_deletion_period":60,"message_deletion_mode":["sender","creator"],"share_url":"https://groupme.com/join_group/69502628/qQvLfkEW","share_qr_code_url":"https://image.groupme.com/qr/join_group/69502628/qQvLfkEW/preview","directories":[],"members":[{"user_id":"29762584","nickname":"Colin
+        Delahunty","image_url":"https://i.groupme.com/1024x1024.jpeg.c64d4fc5aeca45cb9fd2c1ca054fc22d","id":"666146052","muted":false,"autokicked":false,"roles":["user"],"name":"Colin
+        Delahunty"},{"user_id":"47806280","nickname":"Evan Parshall","image_url":"https://i.groupme.com/750x750.jpeg.f49b4c25a9b14e94907bfc3c46fea801","id":"666146069","muted":false,"autokicked":false,"roles":["user"],"name":"Evan
+        Parshall"},{"user_id":"68449690","nickname":"zach delahunty","image_url":"","id":"666177541","muted":false,"autokicked":false,"roles":["admin","owner"],"name":"zach
+        delahunty"}],"locations":[],"visibility":"hidden"}}
+
+        '
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '1707'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 23 Jul 2022 23:12:30 GMT
+      access-control-allow-credentials:
+      - 'false'
+      access-control-allow-headers:
+      - Accept, Content-Type, X-Requested-With, X-Access-Token, User-Agent, Pragma,
+        Referrer, Cache-Control, Origin
+      access-control-allow-methods:
+      - POST, GET, PUT, DELETE, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      access-control-max-age:
+      - '86400'
+      cache-control:
+      - must-revalidate, private, max-age=0
+      ms-cv:
+      - MJd3eOu4SiqWyRW8
+      - +5KJV2XY7S66iEpT
+      server:
+      - istio-envoy
+      x-envoy-upstream-service-time:
+      - '10'
+      x-gm-request-id:
+      - authproxy:5663f0
+      x-gm-service:
+      - authproxy-local
+      - conversations
+    status:
+      code: 200
+      message: OK
+version: 1

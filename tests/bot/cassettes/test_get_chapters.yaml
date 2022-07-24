@@ -1,0 +1,51 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.28.1
+      api-key:
+      - DUMMY
+    method: GET
+    uri: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/books/JHN/chapters
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA6XTPU7EMBDF8asg1wvKm3zvCVgKLoAoEuKICEikaKlWuTuJBBIeve6VHtv/qX63
+        MHTXLpxfbmEawjk8PT4/TPN1XcIp9FP/GS/HdIhFhHVjPVozlm17n9lxvywfl99P+3H+/urjuh//
+        /q9xjGuc3+LxZHmfw3b6twXCBpD6HdK+CX1jfUv7udDPWT9P+4XQL1i/SPul0C9Zv0z7ldCvWL9K
+        +7XQr1m/TvuN0G9Yv0n7rdBvWb91vjIFWEaFZW6FZJgjdoqhMAZ1DAcZimRQynCWoWAG1QzHGYpn
+        UNBwoqGQBjUNhxqKalDWcK6hwAaVDUcbim1Q3HC6TdFtVLc53aboNqp7n26v2w+2Z23ZdAgAAA==
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Sat, 23 Jul 2022 23:12:25 GMT
+      Server:
+      - nginx/1.16.1
+      Transfer-Encoding:
+      - chunked
+      access-control-expose-headers:
+      - WWW-Authenticate,Server-Authorization
+      cache-control:
+      - no-cache
+      content-encoding:
+      - gzip
+      vary:
+      - origin,accept-encoding
+      x-request-wants-bypass:
+      - static
+      x-server-allows-bypass:
+      - static
+    status:
+      code: 200
+      message: OK
+version: 1

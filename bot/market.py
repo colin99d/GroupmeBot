@@ -10,7 +10,8 @@ from . import groupme
 matplotlib.use("Agg")
 
 
-def evan_voyager(*args) -> str:
+def evan_voyager(**kwargs) -> str:
+    del kwargs
     stock = yf.Ticker("VYGVF")
     info = stock.info
     price = float(info["currentPrice"])
@@ -20,7 +21,9 @@ def evan_voyager(*args) -> str:
     return f"Evan has {t} ${d} from Voyager."
 
 
-def chart_stock(text: str, group: str):
+def chart_stock(**kwargs):
+    text = kwargs["text"]
+    group = kwargs["group_id"]
     ticker = text.split(" ")[-1]
     stock = yf.Ticker(ticker)
     hist = stock.history(period="1y")

@@ -6,9 +6,8 @@ from urllib.error import HTTPError
 import html
 from random import randint
 from sqlalchemy.orm import Session
-
-import requests
 from sqlalchemy import func, desc
+import requests
 
 from . import groupme, models, schemas
 
@@ -19,7 +18,8 @@ def get_random(lst):
     return lst[rnd]
 
 
-def random_insult(_, group: str) -> str:
+def random_insult(**kwargs) -> str:
+    group = kwargs["group_id"]
     response = requests.get(
         "https://evilinsult.com/generate_insult.php?lang=en&type=text"
     )
@@ -30,8 +30,9 @@ def random_insult(_, group: str) -> str:
     return f"@{name} {insult}"
 
 
-def generate_card(_, group_id):
-    with open("bot/data/players.json") as json_file:
+def generate_card(**kwargs):
+    group_id = kwargs["group_id"]
+    with open("bot/data/players.json", encoding="utf-8") as json_file:
         players = json.load(json_file)
     selection = get_random(list(players))
     p = players[selection]
@@ -46,11 +47,11 @@ def generate_card(_, group_id):
         groupme.send_message(selection, group_id)
 
 
-def handle_stats(_, group_id):
+def handle_stats(**kwargs):
+    group_id = kwargs["group_id"]
+    db = kwargs["db"]
     query = (
-        models.db.session.query(
-            models.Post.name, func.count(models.Post.name).label("name_count")
-        )
+        db.query(models.Post.name, func.count(models.Post.name).label("name_count"))
         .group_by(models.Post.name)
         .filter_by(group_id=group_id)
         .order_by(desc("name_count"))

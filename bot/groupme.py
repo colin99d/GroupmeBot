@@ -74,6 +74,7 @@ def send_image(
     return requests.post(base + mid + end, data=json.dumps(data))
 
 
+@cache
 def get_members(group: str) -> List[Dict[str, str]]:
     mid = f"/groups/{group}"
     response = requests.get(base + mid + end)

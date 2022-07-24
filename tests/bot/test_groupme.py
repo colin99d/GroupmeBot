@@ -3,7 +3,7 @@ from bot import groupme
 from bot import schemas
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_send_image(mocker):
     mock = mocker.Mock()
     mocker.patch("bot.groupme.send_image", mock)
@@ -13,7 +13,7 @@ def test_send_image(mocker):
     )
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_send_message(mocker):
     mock = mocker.Mock()
     mocker.patch("bot.groupme.send_image", mock)
@@ -23,7 +23,7 @@ def test_send_message(mocker):
     )
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_remove_user(mocker):
     mock = mocker.Mock()
     mocker.patch("requests.post", mock)
@@ -34,19 +34,19 @@ def test_remove_user(mocker):
     )
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_group_info():
     post = groupme.group_info(schemas.settings.TEST_GROUP_ID)
     assert post.status_code == 200
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_list_groups():
     post = groupme.list_groups()
     assert post.status_code == 200
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_add_user(mocker):
     mock = mocker.Mock()
     mocker.patch("requests.post", mock)

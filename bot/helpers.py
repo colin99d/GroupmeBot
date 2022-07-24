@@ -42,8 +42,8 @@ def handler(body: schemas.Message, db: Session):
                         message = val
                     elif callable(val):
                         message = val(text=text, group_id=group_id, db=db)
-                    else:
-                        message = "Invalid command. Call 'help' for a list of commands"
                     break
-            if message:
-                groupme.send_message(message, group_id)
+
+            if not message:
+                message = "Invalid command. Call 'help' for a list of commands"
+            groupme.send_message(message, group_id)

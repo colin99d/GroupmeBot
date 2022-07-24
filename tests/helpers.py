@@ -1,7 +1,8 @@
+from typing import Dict, Any
 from bot import schemas
 
 
-def get_post(option):
+def get_post(message: str) -> Dict[str, Any]:
     return {
         "attachments": [],
         "avatar_url": "https://i.groupme.com/1024x1024.jpeg.c64d4fc5aeca45cb9fd2c1ca054fc22d",
@@ -13,6 +14,6 @@ def get_post(option):
         "sender_type": "user",
         "source_guid": "baac853e03cdf5d1d1ff77f105711ef3",
         "system": False,
-        "text": f"@sportsbot {option}",
+        "text": f"@sportsbot {message}",
         "user_id": "29762584",
     }

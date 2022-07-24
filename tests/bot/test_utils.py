@@ -1,6 +1,6 @@
 import pytest
-from bot import schemas
-from bot import utils
+from bot import schemas, utils
+from tests import helpers as thelps
 
 
 def test_get_random():
@@ -30,8 +30,23 @@ def test_generate_card(mocker):
 @pytest.mark.skip
 def test_generate_card_error(mocker):
     mock = mocker.Mock()
-    mocker.patch("bot.groupme.send_image", mock)
-    mocker.patch("bot.utils.get_random", lambda x: x[0])
+    data = {
+        "Test": {
+            "Strengths": ["1"],
+            "Weaknesses": ["2"],
+            "Description": "3",
+        }
+    }
+    mocker.patch("bot.utils.json.load", return_value=data)
+    mocker.patch("bot.utils.get_random", return_value="Test")
     mock = mocker.patch("bot.utils.groupme.send_message")
-    utils.generate_card(group_id=999999999999)
+    utils.generate_card(group_id=schemas.settings.TEST_GROUP_ID)
     mock.assert_called_once()
+
+
+def test_handle_stats(db):
+    data = thelps.get_post("Hello")
+    schema = schemas.Message(**data)
+    utils.add_post(db, schema)
+    value = utils.handle_stats(group_id=schemas.settings.TEST_GROUP_ID, db=db)
+    assert value

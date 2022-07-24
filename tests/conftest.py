@@ -23,6 +23,7 @@ def db_engine():
 
 @pytest.fixture(scope="function")
 def db(db_engine):
+    print(db_engine.url.database)
     connection = db_engine.connect()
     connection.begin()
     db = Session(bind=connection)

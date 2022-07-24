@@ -24,3 +24,13 @@ def test_get_standings():
 def test_win_chance():
     win_chance = ESPN.win_chance()
     assert win_chance == "Winner is: UUP?"
+
+
+def test_win_chance_less_than_nine(mocker):
+    data = [
+        {"abbrev": "hi", "points": 12, "record": {"overall": {"losses": 3, "wins": 4}}},
+        {"abbrev": "bye", "points": 1, "record": {"overall": {"losses": 4, "wins": 3}}},
+    ]
+    mocker.patch("bot.ESPN.team_stats", return_value=data)
+    win_chance = ESPN.win_chance()
+    assert "Player's chance of winning:" in win_chance

@@ -9,13 +9,13 @@ def test_get_random():
     assert option in options
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_random_insult():
     insult = utils.random_insult(group_id=schemas.settings.TEST_GROUP_ID)
     assert "@" in insult
 
 
-@pytest.mark.vcr(match_on=["method", "scheme", "port", "path"])
+@pytest.mark.vcr(match_on=["method", "scheme", "port"])
 def test_generate_card(mocker):
     mock = mocker.Mock()
     mocker.patch("bot.groupme.send_image", mock)

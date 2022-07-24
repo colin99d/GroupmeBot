@@ -34,7 +34,9 @@ def upload_image(image: str, local: bool) -> str:
     if local:
         path_string = pathlib.Path(__file__).parent.parent.resolve()
         path = os.path.join(path_string, image)
-        return requests.post(url, data=open(path, "rb").read(), headers=headers)
+        return requests.post(url, data=open(path, "rb").read(), headers=headers)[
+            "payload"
+        ]["picture_url"]
     req = Request(image)
     text = "Mozilla/5.0 (Macintosh; Intel Mac"
     req.add_header(

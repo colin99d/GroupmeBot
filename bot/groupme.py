@@ -34,7 +34,7 @@ def upload_image(image: str, local: bool) -> str:
     if local:
         path_string = pathlib.Path(__file__).parent.parent.resolve()
         path = os.path.join(path_string, image)
-        return requests.post(url, data=open(path, "rb").read(), headers=headers)[
+        return requests.post(url, data=open(path, "rb").read(), headers=headers).json()[
             "payload"
         ]["picture_url"]
     req = Request(image)

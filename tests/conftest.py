@@ -1,10 +1,10 @@
 import pytest
-from bot.database import Base
-from bot.database import engine
-from bot.database import get_db
 from fastapi.testclient import TestClient
-from main import app  # noqa: E402
 from sqlalchemy.orm import Session
+from bot.database import Base, engine, get_db
+from main import app  # noqa: E402
+
+# pylint:disable = W0621
 
 
 @pytest.fixture(scope="module")
@@ -41,3 +41,26 @@ def client(db):
     # Using testclient in a context manager triggers on_event
     c = TestClient(app)
     return c
+
+
+def return_message(**kwargs):
+    del kwargs
+    return "A friendly message"
+
+
+@pytest.fixture(scope="function")
+def mock_actions(mocker):
+    new_dict = {
+        x: return_message
+        for x in [
+            "bible",
+            "scores",
+            "winner",
+            "stock",
+            "voyager",
+            "insult",
+            "card",
+            "stats",
+        ]
+    }
+    mocker.patch("bot.helpers.message_dict", new_dict)

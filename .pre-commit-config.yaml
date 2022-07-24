@@ -6,13 +6,6 @@ repos:
     hooks:
       - id: pyupgrade
         args: ["--py36-plus"]
-  - repo: https://github.com/asottile/reorder_python_imports
-    rev: v2.6.0
-    hooks:
-      - id: reorder-python-imports
-        name: Reorder Python imports (src, tests)
-        files: "^(?!examples/)"
-        args: ["--application-directories", "src"]
   - repo: https://github.com/psf/black
     rev: 22.6.0
     hooks:

@@ -1,6 +1,7 @@
 """Market"""
 __docformat__ = "numpy"
 
+from typing import Optional
 import yfinance as yf
 import matplotlib
 import matplotlib.pyplot as plt
@@ -21,7 +22,7 @@ def evan_voyager(**kwargs) -> str:
     return f"Evan has {t} ${d} from Voyager."
 
 
-def chart_stock(**kwargs):
+def chart_stock(**kwargs) -> Optional[str]:
     text = kwargs["text"]
     group = kwargs["group_id"]
     ticker = text.split(" ")[-1]
@@ -35,3 +36,4 @@ def chart_stock(**kwargs):
     ax.set_title(f"Ending prices for {ticker.upper()}")
     fig.savefig("chart.png", format="png")
     groupme.send_image("chart.png", group, "", True)
+    return None
